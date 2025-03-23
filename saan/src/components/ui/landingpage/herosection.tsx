@@ -112,6 +112,19 @@ const HeroSection = () => {
     },
   };
 
+  const badgeTextVariants = {
+    initial: { scale: 1, textShadow: "0 0 5px rgba(255, 255, 255, 0.5)" },
+    animate: {
+      scale: [1, 1.05, 1],
+      textShadow: [
+        "0 0 5px rgba(255, 255, 255, 0.5)",
+        "0 0 10px rgba(255, 255, 255, 0.8)",
+        "0 0 5px rgba(255, 255, 255, 0.5)",
+      ],
+      transition: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+    },
+  };
+
   const buttonVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
@@ -161,7 +174,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white py-12 min-h-[90vh] overflow-hidden">
+    <section className="relative bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white py-8 sm:py-12 min-h-[70vh] sm:min-h-[90vh] overflow-hidden">
       {/* Subtle Background Wave Shape */}
       <div className="absolute inset-0 z-0">
         <svg
@@ -191,62 +204,69 @@ const HeroSection = () => {
 
       {/* Content */}
       <motion.div
-        className="relative max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between z-10"
+        className="relative max-w-7xl mx-auto px-4 flex flex-col items-center justify-between z-10 space-y-6 sm:space-y-0 sm:flex-row"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
         {/* Left Side: Highlighted Content */}
-        <div className="md:w-[55%] text-center md:text-left mb-10 md:mb-0 space-y-6">
-          <motion.div variants={childVariants} className="mb-6">
+        <div className="w-full sm:w-[55%] text-center sm:text-left space-y-4 sm:space-y-6">
+          <motion.div variants={childVariants} className="mb-4 sm:mb-6">
             <MotionBadge
-              className="inline-block text-3xl md:text-4xl bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 font-bold px-8 py-4 rounded-full"
+             
+              className="inline-block text-xl sm:text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 font-bold px-6 py-3 sm:px-8 sm:py-4 rounded-full"
               variants={badgeVariants}
               initial="hidden"
               animate="visible"
               whileInView="pulse"
             >
-            50% Off on All Courses – Offer Valid Until Baisakh! Enroll Now!
+              <motion.span
+                variants={badgeTextVariants}
+                initial="initial"
+                animate="animate"
+              >
+                Special Offer: 50% Off All Courses Until Baisakh!
+              </motion.span>
             </MotionBadge>
-          
+         
           </motion.div>
           <motion.h1
             variants={childVariants}
-            className="text-5xl md:text-6xl font-extrabold mb-2 leading-tight bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent"
+            className="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-2 leading-tight bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent"
           >
             SAAN Coaching and Training Center
           </motion.h1>
           <motion.p
             variants={childVariants}
-            className="text-lg md:text-xl font-light mb-4 text-gray-400"
+            className="text-sm sm:text-lg md:text-xl font-light mb-4 text-gray-400"
           >
-            Empowering Students for Success Since 2023
+            Empowering Students for Success Since 2010
           </motion.p>
           <motion.p
             variants={childVariants}
-            className="text-xl md:text-2xl font-light mb-4 text-gray-300"
+            className="text-base sm:text-xl md:text-2xl font-light mb-4 text-gray-300"
           >
             {typedText}
-            <span className="inline-block w-1 h-8 bg-yellow-500 ml-1 animate-blink"></span>
+            <span className="inline-block w-1 h-6 sm:h-8 bg-yellow-500 ml-1 animate-blink"></span>
           </motion.p>
           {/* Updated Highlights with Icons */}
           <motion.ul
             variants={childVariants}
-            className="space-y-3 mb-4"
+            className="space-y-2 sm:space-y-3 mb-4"
           >
             {highlights.map((highlight, index) => (
-              <li key={index} className="flex items-center gap-3">
-                <span className="text-2xl" style={{ color: highlight.color }}>
+              <li key={index} className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3">
+                <span className="text-lg sm:text-2xl" style={{ color: highlight.color }}>
                   {highlight.icon}
                 </span>
-                <span className="text-xl text-gray-300">{highlight.text}</span>
+                <span className="text-base sm:text-xl text-gray-300">{highlight.text}</span>
               </li>
             ))}
           </motion.ul>
           {/* Testimonial */}
           <motion.div
             variants={childVariants}
-            className="mb-4 text-lg text-gray-300 italic"
+            className="mb-4 text-sm sm:text-lg text-gray-300 italic"
           >
             "98% of our students improved their grades after joining SAAN!" - Happy Parent
           </motion.div>
@@ -255,9 +275,9 @@ const HeroSection = () => {
             <motion.div variants={buttonVariants} whileHover="hover">
               <Button
                 size="lg"
-                className="bg-yellow-500 text-blue-900 hover:bg-yellow-600 font-semibold px-10 py-4 rounded-full flex items-center gap-3 text-lg"
+                className="bg-yellow-500 text-blue-900 hover:bg-yellow-600 font-semibold px-6 py-3 sm:px-10 sm:py-4 rounded-full flex items-center gap-2 sm:gap-3 text-sm sm:text-lg mx-auto sm:mx-0"
               >
-                <FaWhatsapp className="text-2xl" />
+                <FaWhatsapp className="text-lg sm:text-2xl" />
                 <a href="https://wa.me/9824864187" target="_blank" rel="noopener noreferrer">
                   Join Now via WhatsApp
                 </a>
@@ -268,7 +288,7 @@ const HeroSection = () => {
 
         {/* Right Side: Student Image with Decorative Circles */}
         <motion.div
-          className="md:w-[45%] h-full flex justify-center relative"
+          className="w-full sm:w-[45%] flex justify-center relative mt-6 sm:mt-0"
           initial="hidden"
           animate="visible"
           whileHover="hover"
@@ -279,16 +299,16 @@ const HeroSection = () => {
           <Image
             src="/student.png"
             alt="Two students wearing SAAN Coaching and Training Center t-shirts"
-            width={700}
-            height={700}
-            className="w-full h-full object-contain z-10"
+            width={500}
+            height={500}
+            className="w-3/4 sm:w-full h-auto object-contain z-10"
           />
         </motion.div>
       </motion.div>
 
       {/* Animated Graduation Cap Icon */}
       <motion.div
-        className="absolute bottom-8 right-8 text-6xl opacity-20 md:text-9xl z-10"
+        className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 text-4xl sm:text-6xl md:text-9xl opacity-20 z-10"
         initial={{ opacity: 0, rotate: -10 }}
         animate={{
           opacity: 0.2,
