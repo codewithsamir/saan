@@ -256,7 +256,7 @@ const HeroSection = () => {
             variants={childVariants}
             className="text-lg font-light mb-2 sm:mb-4 text-gray-400"
           >
-            Empowering Students for Success Since 2023
+            Empowering Students for Success Since 2080
           </motion.p>
           <motion.p
             variants={childVariants}
@@ -319,6 +319,8 @@ const HeroSection = () => {
             height={400}
             className="w-2/3 sm:w-full h-auto object-contain z-10"
           />
+
+          
         </motion.div>
       </motion.div>
 

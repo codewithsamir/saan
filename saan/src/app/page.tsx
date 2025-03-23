@@ -1,11 +1,13 @@
 
 import {  services } from "@/util/service";
-import Header from "@/components/ui/landingpage/header";
-import HeroSection from "@/components/ui/landingpage/herosection";
+import Header from "@/components/landingpage/header";
+import HeroSection from "@/components/landingpage/herosection";
 
-import ServiceSection from "@/components/ui/landingpage/sections";
-import Servicecardsection from "@/components/ui/landingpage/servicecardsection";
-import ContactSection from "@/components/ui/landingpage/contactus";
+import ServiceSection from "@/components/landingpage/sections";
+import Servicecardsection from "@/components/landingpage/servicecardsection";
+import ContactSection from "@/components/landingpage/contactus";
+import GallerySection from "@/components/landingpage/galarysection";
+import PopupAdvertisement from "@/components/landingpage/advertisement";
 
 export default function Home() {
 
@@ -19,7 +21,18 @@ export default function Home() {
       <Header/>
       <HeroSection/>
 
-
+{/* Example with a PDF */}
+{/* <PopupAdvertisement
+        contentType="pdf"
+        contentUrl="/path/to/offer-flyer.pdf" // Replace with your actual PDF URL
+      /> */}
+      {/* Example with an Image */}
+      <PopupAdvertisement
+        contentType="image"
+        contentUrl="/course_advertisement.png" // Replace with your actual image URL
+      />
+      {/* Example with Text Only */}
+      {/* <PopupAdvertisement contentType="text" /> */}
       {/* Services Section */}
      <Servicecardsection />
 
@@ -40,6 +53,7 @@ export default function Home() {
         />
       ))}
 
+<GallerySection/>
 
       {/* Contact Section */}
   <ContactSection/> 

@@ -114,7 +114,7 @@ const ContactSection = () => {
     {
       name: "Email",
       icon: <FaEnvelope className="text-lg sm:text-xl" />,
-      href: "mailto:info@saancoaching.com", // Replace with your actual email
+      href: "mailto:info@saancoaching.com",
       bgColor: "bg-gray-600",
       hoverColor: "hover:bg-gray-700",
       textColor: "text-white",

@@ -52,7 +52,7 @@
       checkColor: "text-yellow-500",
     },
     {
-      title: "Coaching for Classes 5-10",
+      title: "Coaching for Classes 6-10",
       id: "coaching",
       details: [
         "Interactive Classes with Fun Activities for Better Understanding",

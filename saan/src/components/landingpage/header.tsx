@@ -13,7 +13,7 @@ export default function Header() {
         <nav className="hidden md:flex space-x-4 md:items-center">
           <a href="#bridge-course" className="hover:text-yellow-300 transition-colors">Bridge Course</a>
           <a href="#computer-training" className="hover:text-yellow-300 transition-colors">Computer Training</a>
-          <a href="#coaching" className="hover:text-yellow-300 transition-colors">Coaching 5-10</a>
+          <a href="#coaching" className="hover:text-yellow-300 transition-colors">Coaching 6-10</a>
           <a href="#mobile-repairing" className="hover:text-yellow-300 transition-colors">Mobile Repairing</a>
           <a href="#programming" className="hover:text-yellow-300 transition-colors">Programming</a>
           <a href="#web-development" className="hover:text-yellow-300 transition-colors">Web Development</a>
