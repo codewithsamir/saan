@@ -148,20 +148,33 @@ const HeroSection = () => {
     hover: { scale: 1.02, transition: { duration: 0.3 } },
   };
 
+  const headingVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.8, type: "spring", bounce: 0.5 },
+    },
+    hover: {
+      scale: 1.02,
+      transition: { duration: 0.3 },
+    },
+  };
+
   // Generate floating elements (reduced for focus on content)
   const floatingElements = [
-    { x: "10%", y: "15%", size: 25, type: "book" },
-    { x: "90%", y: "25%", size: 20, type: "laptop" },
+    { x: "10%", y: "15%", size: 20, type: "book" },
+    { x: "90%", y: "25%", size: 15, type: "laptop" },
   ].map((elem, i) => (
     <FloatingElement key={i} x={elem.x} y={elem.y} size={elem.size} type={elem.type as "book" | "laptop"} />
   ));
 
   // Generate decorative circles around the image
   const decorativeCircles = [
-    { x: "10%", y: "10%", size: 50, color: "#F97316" },
-    { x: "80%", y: "20%", size: 40, color: "#3B82F6" },
-    { x: "20%", y: "70%", size: 60, color: "#FBBF24" },
-    { x: "90%", y: "80%", size: 30, color: "#F97316" },
+    { x: "10%", y: "10%", size: 40, color: "#F97316" },
+    { x: "80%", y: "20%", size: 30, color: "#3B82F6" },
+    { x: "20%", y: "70%", size: 50, color: "#FBBF24" },
+    { x: "90%", y: "80%", size: 20, color: "#F97316" },
   ].map((circle, i) => (
     <DecorativeCircle key={i} x={circle.x} y={circle.y} size={circle.size} color={circle.color} />
   ));
@@ -174,7 +187,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white py-8 sm:py-12 min-h-[70vh] sm:min-h-[90vh] overflow-hidden">
+    <section className="relative bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white py-6 sm:py-8 min-h-[70vh] sm:min-h-[92vh] overflow-hidden">
       {/* Subtle Background Wave Shape */}
       <div className="absolute inset-0 z-0">
         <svg
@@ -204,17 +217,17 @@ const HeroSection = () => {
 
       {/* Content */}
       <motion.div
-        className="relative max-w-7xl mx-auto px-4 flex flex-col items-center justify-between z-10 space-y-6 sm:space-y-0 sm:flex-row"
+        className="relative max-w-6xl mx-auto px-3 sm:px-4 flex flex-col items-center justify-between z-10 space-y-4 sm:space-y-0 sm:flex-row"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
         {/* Left Side: Highlighted Content */}
-        <div className="w-full sm:w-[55%] text-center sm:text-left space-y-4 sm:space-y-6">
-          <motion.div variants={childVariants} className="mb-4 sm:mb-6">
+        <div className="w-full sm:w-[55%] text-center sm:text-left space-y-3 sm:space-y-4">
+          <motion.div variants={childVariants} className="mb-3 sm:mb-4">
             <MotionBadge
              
-              className="inline-block text-xl w-full sm:text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 font-bold px-2 py-3 sm:px-8 sm:py-4 rounded-full"
+              className="inline-block text-lg sm:text-2xl md:text-3xl lg:text-4xl bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 font-bold px-3 py-2 sm:px-6 sm:py-3 rounded-full text-center whitespace-normal break-words "
               variants={badgeVariants}
               initial="hidden"
               animate="visible"
@@ -224,49 +237,52 @@ const HeroSection = () => {
                 variants={badgeTextVariants}
                 initial="initial"
                 animate="animate"
+                className="inline-block sm:whitespace-nowrap"
               >
                 Special Offer: 50% Off All Courses Until Baisakh!
               </motion.span>
             </MotionBadge>
-         
           </motion.div>
           <motion.h1
-            variants={childVariants}
-            className="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-2 leading-tight bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent"
+            variants={headingVariants}
+            initial="hidden"
+            animate="visible"
+            whileHover="hover"
+            className="text-4xl md:text-5xl font-extrabold mb-1 sm:mb-2 leading-tight bg-gradient-to-r from-blue-200 to-blue-500 bg-clip-text text-transparent [text-shadow:_0_2px_4px_rgba(0,0,0,0.3)]"
           >
             SAAN Coaching and Training Center
           </motion.h1>
           <motion.p
             variants={childVariants}
-            className="text-sm sm:text-lg md:text-xl font-light mb-4 text-gray-400"
+            className="text-lg font-light mb-2 sm:mb-4 text-gray-400"
           >
-            Empowering Students for Success Since 2010
+            Empowering Students for Success Since 2023
           </motion.p>
           <motion.p
             variants={childVariants}
-            className="text-base sm:text-xl md:text-2xl font-light mb-4 text-gray-300"
+            className=" text-lg md:text-xl font-medium mb-2 sm:mb-4 text-gray-300"
           >
             {typedText}
-            <span className="inline-block w-1 h-6 sm:h-8 bg-yellow-500 ml-1 animate-blink"></span>
+            <span className="inline-block w-1 h-4 sm:h-6 bg-yellow-500 ml-1 animate-blink"></span>
           </motion.p>
           {/* Updated Highlights with Icons */}
           <motion.ul
             variants={childVariants}
-            className="space-y-2 sm:space-y-3 mb-4"
+            className="space-y-1 sm:space-y-2 mb-2 sm:mb-4"
           >
             {highlights.map((highlight, index) => (
-              <li key={index} className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3">
-                <span className="text-lg sm:text-2xl" style={{ color: highlight.color }}>
+              <li key={index} className="flex items-center justify-center sm:justify-start gap-2">
+                <span className="text-base sm:text-lg" style={{ color: highlight.color }}>
                   {highlight.icon}
                 </span>
-                <span className="text-base sm:text-xl text-gray-300">{highlight.text}</span>
+                <span className="text-sm sm:text-base md:text-lg text-gray-300">{highlight.text}</span>
               </li>
             ))}
           </motion.ul>
           {/* Testimonial */}
           <motion.div
             variants={childVariants}
-            className="mb-4 text-sm sm:text-lg text-gray-300 italic"
+            className="mb-2 sm:mb-4 text-sm sm:text-base md:text-lg text-gray-300 italic"
           >
             "98% of our students improved their grades after joining SAAN!" - Happy Parent
           </motion.div>
@@ -274,10 +290,10 @@ const HeroSection = () => {
           <motion.div variants={childVariants}>
             <motion.div variants={buttonVariants} whileHover="hover">
               <Button
-                size="lg"
-                className="bg-yellow-500 text-blue-900 hover:bg-yellow-600 font-semibold px-6 py-3 sm:px-10 sm:py-4 rounded-full flex items-center gap-2 sm:gap-3 text-sm sm:text-lg mx-auto sm:mx-0"
+                size="sm"
+                className="bg-yellow-500 text-blue-900 hover:bg-yellow-600 font-semibold px-4 py-2 sm:px-6 sm:py-3 rounded-full flex items-center gap-1 sm:gap-2 text-sm sm:text-base md:text-lg mx-auto sm:mx-0"
               >
-                <FaWhatsapp className="text-lg sm:text-2xl" />
+                <FaWhatsapp className="text-base sm:text-lg" />
                 <a href="https://wa.me/9824864187" target="_blank" rel="noopener noreferrer">
                   Join Now via WhatsApp
                 </a>
@@ -288,7 +304,7 @@ const HeroSection = () => {
 
         {/* Right Side: Student Image with Decorative Circles */}
         <motion.div
-          className="w-full sm:w-[45%] flex justify-center relative mt-6 sm:mt-0"
+          className="w-full sm:w-[45%] flex justify-center relative mt-4 sm:mt-0"
           initial="hidden"
           animate="visible"
           whileHover="hover"
@@ -299,16 +315,16 @@ const HeroSection = () => {
           <Image
             src="/student.png"
             alt="Two students wearing SAAN Coaching and Training Center t-shirts"
-            width={500}
-            height={500}
-            className="w-3/4 sm:w-full h-auto object-contain z-10"
+            width={400}
+            height={400}
+            className="w-2/3 sm:w-full h-auto object-contain z-10"
           />
         </motion.div>
       </motion.div>
 
       {/* Animated Graduation Cap Icon */}
       <motion.div
-        className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 text-4xl sm:text-6xl md:text-9xl opacity-20 z-10"
+        className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 text-3xl sm:text-4xl md:text-6xl opacity-20 z-10"
         initial={{ opacity: 0, rotate: -10 }}
         animate={{
           opacity: 0.2,
