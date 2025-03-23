@@ -18,7 +18,9 @@ export default function Header() {
           <a href="#programming" className="hover:text-yellow-300 transition-colors">Programming</a>
           <a href="#web-development" className="hover:text-yellow-300 transition-colors">Web Development</a>
           <Button asChild variant="outline" className="text-blue-900 bg-yellow-500 hover:bg-yellow-600">
-            <a href="#contact">Contact Us</a>
+          <a href="https://wa.me/9824864187" target="_blank" rel="noopener noreferrer">
+              Contact us
+            </a>
           </Button>
         </nav>
 
@@ -50,7 +52,9 @@ export default function Header() {
               <a href="#web-development" className="w-full">Web Development</a>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <a href="#contact" className="w-full">Contact Us</a>
+            <a href="https://wa.me/9824864187" target="_blank" rel="noopener noreferrer">
+              Contact us
+            </a>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
