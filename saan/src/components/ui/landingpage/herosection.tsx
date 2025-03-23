@@ -2,15 +2,18 @@
 import Image from "next/image";
 import { FaGraduationCap, FaWhatsapp, FaChalkboardTeacher, FaTrophy, FaMoneyBillWave } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
-import { Badge, BadgeProps } from "@/components/ui/badge";
+import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+
+// Infer BadgeProps using React.ComponentProps
+type BadgeProps = React.ComponentProps<typeof Badge>;
 
 // Create a motion-enabled version of the Badge component
 const MotionBadge = motion<BadgeProps>(Badge);
 
 // Floating Element for Background Animation
-const FloatingElement = ({ x, y, size, type }: { x: number; y: number; size: number; type: "book" | "laptop" }) => {
+const FloatingElement = ({ x, y, size, type }: { x: string; y: string; size: number; type: "book" | "laptop" }) => {
   return (
     <motion.div
       className="absolute"
@@ -76,24 +79,6 @@ const HeroSection = () => {
       }
     }, 100);
     return () => clearInterval(typingInterval);
-  }, []);
-
-  // Counter animation for the statistic
-  const [counter, setCounter] = useState(0);
-  useEffect(() => {
-    const target = 5000;
-    const duration = 2000; // 2 seconds
-    const increment = target / (duration / 50);
-    const interval = setInterval(() => {
-      setCounter((prev) => {
-        if (prev >= target) {
-          clearInterval(interval);
-          return target;
-        }
-        return prev + increment;
-      });
-    }, 50);
-    return () => clearInterval(interval);
   }, []);
 
   // Framer Motion animation variants
@@ -215,15 +200,15 @@ const HeroSection = () => {
         <div className="md:w-[55%] text-center md:text-left mb-10 md:mb-0 space-y-6">
           <motion.div variants={childVariants} className="mb-6">
             <MotionBadge
-              variant="default"
               className="inline-block text-3xl md:text-4xl bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 font-bold px-8 py-4 rounded-full"
               variants={badgeVariants}
               initial="hidden"
               animate="visible"
               whileInView="pulse"
             >
-              Special Offer: 50% Discount Until Baisakh!
+            50% Off on All Courses – Offer Valid Until Baisakh! Enroll Now!
             </MotionBadge>
+          
           </motion.div>
           <motion.h1
             variants={childVariants}
@@ -265,7 +250,6 @@ const HeroSection = () => {
           >
             "98% of our students improved their grades after joining SAAN!" - Happy Parent
           </motion.div>
-       
           {/* Button */}
           <motion.div variants={childVariants}>
             <motion.div variants={buttonVariants} whileHover="hover">
