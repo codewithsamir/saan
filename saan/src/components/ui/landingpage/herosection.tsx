@@ -214,7 +214,7 @@ const HeroSection = () => {
           <motion.div variants={childVariants} className="mb-4 sm:mb-6">
             <MotionBadge
              
-              className="inline-block text-xl sm:text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 font-bold px-6 py-3 sm:px-8 sm:py-4 rounded-full"
+              className="inline-block text-xl w-full sm:text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 font-bold px-2 py-3 sm:px-8 sm:py-4 rounded-full"
               variants={badgeVariants}
               initial="hidden"
               animate="visible"
