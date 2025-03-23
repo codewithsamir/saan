@@ -2,9 +2,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import { MeshDistortMaterial, OrbitControls, Sphere } from "@react-three/drei";
-import { isMobile } from "react-device-detect"; // Import isMobile for device detection
 
 // Define the props interface
 interface ServiceSectionProps {
@@ -89,25 +86,9 @@ export default function ServiceSection({
         </svg>
       </div>
 
-      {/* Three.js 3D Sphere Background */}
-      <div className="absolute inset-0 opacity-5 z-0 pointer-events-none">
-        <Canvas>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} />
-          <Sphere args={[1, 32, 32]} scale={5}>
-            <MeshDistortMaterial
-              color={textColor.includes("orange") ? "#F97316" : textColor.includes("blue") ? "#3B82F6" : "#FBBF24"}
-              distort={0.4}
-              speed={2}
-            />
-          </Sphere>
-          <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={1} />
-        </Canvas>
-      </div>
-
       {/* Content */}
       <motion.div
-        className="max-w-6xl mx-auto relative z-10"
+        className="max-w-6xl mx-auto relative z-10 touch-action-auto"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -138,8 +119,7 @@ export default function ServiceSection({
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                // Disable whileHover on mobile
-                {...(!isMobile && { whileHover: "hover" })}
+                whileHover="hover" // Enable hover effect for all devices
                 variants={buttonVariants}
               >
                 <Button asChild className={`mt-6 ${buttonColor}`}>
@@ -155,8 +135,7 @@ export default function ServiceSection({
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            // Disable whileHover on mobile
-            {...(!isMobile && { whileHover: "hover" })}
+            whileHover="hover" // Enable hover effect for all devices
             variants={imageVariants}
           >
             <div className="h-[300px] rounded-lg flex items-center justify-center overflow-hidden shadow-lg">

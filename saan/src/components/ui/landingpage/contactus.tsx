@@ -1,8 +1,6 @@
-"use client"
+"use client";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import { MeshDistortMaterial, OrbitControls, Sphere } from "@react-three/drei";
 
 const ContactSection = () => {
   // Framer Motion animation variants for the section
@@ -57,21 +55,9 @@ const ContactSection = () => {
         </svg>
       </div>
 
-      {/* Three.js 3D Sphere Background */}
-      <div className="absolute inset-0 opacity-5 z-0">
-        <Canvas>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} />
-          <Sphere args={[1, 32, 32]} scale={5}>
-            <MeshDistortMaterial color="#3B82F6" distort={0.4} speed={2} />
-          </Sphere>
-          <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={1} />
-        </Canvas>
-      </div>
-
       {/* Content */}
       <motion.div
-        className="max-w-6xl mx-auto relative z-10 bg-white/90 backdrop-blur-sm p-8 rounded-lg shadow-lg border-l-4 border-yellow-500"
+        className="max-w-6xl mx-auto relative z-10 bg-white/90 backdrop-blur-sm p-8 rounded-lg shadow-lg border-l-4 border-yellow-500 touch-action-auto"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -102,7 +88,7 @@ const ContactSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          whileHover="hover"
+          whileHover="hover" // Enable hover effect for all devices
           variants={buttonVariants}
         >
           <Button asChild className="bg-yellow-500 text-blue-900 hover:bg-yellow-600">
