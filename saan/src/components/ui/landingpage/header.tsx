@@ -5,7 +5,7 @@ import { Menu } from "lucide-react"; // For the hamburger menu icon
 export default function Header() {
   return (
     <header className="bg-blue-600 text-white py-4 sticky top-0 left-0 z-50 shadow-md">
-      <div className="max-w-6xl mx-auto flex justify-between items-center px-4">
+      <div className="w-full sm:w-[90%] mx-auto flex justify-between items-center px-4">
         {/* Logo/Name */}
         <h1 className="text-2xl font-bold">SAAN Coaching</h1>
 
@@ -18,7 +18,7 @@ export default function Header() {
           <a href="#programming" className="hover:text-yellow-300 transition-colors">Programming</a>
           <a href="#web-development" className="hover:text-yellow-300 transition-colors">Web Development</a>
           <Button asChild variant="outline" className="text-blue-900 bg-yellow-500 hover:bg-yellow-600">
-          <a href="https://wa.me/9824864187" target="_blank" rel="noopener noreferrer">
+          <a href="#contactus" >
               Contact us
             </a>
           </Button>
@@ -52,7 +52,7 @@ export default function Header() {
               <a href="#web-development" className="w-full">Web Development</a>
             </DropdownMenuItem>
             <DropdownMenuItem>
-            <a href="https://wa.me/9824864187" target="_blank" rel="noopener noreferrer">
+            <a href="#contactus" >
               Contact us
             </a>
             </DropdownMenuItem>

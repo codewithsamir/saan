@@ -217,7 +217,7 @@ const HeroSection = () => {
 
       {/* Content */}
       <motion.div
-        className="relative max-w-6xl mx-auto px-3 sm:px-4 flex flex-col items-center justify-between z-10 space-y-4 sm:space-y-0 sm:flex-row"
+        className="relative w-full sm:w-[90%]  mx-auto px-3 sm:px-4 flex flex-col items-center justify-between z-10 space-y-4 sm:space-y-0 sm:flex-row"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
@@ -248,7 +248,7 @@ const HeroSection = () => {
             initial="hidden"
             animate="visible"
             whileHover="hover"
-            className="text-4xl md:text-5xl font-extrabold mb-1 sm:mb-2 leading-tight bg-gradient-to-r from-blue-200 to-blue-500 bg-clip-text text-transparent [text-shadow:_0_2px_4px_rgba(0,0,0,0.3)]"
+            className="text-4xl md:text-5xl font-extrabold mb-1 sm:mb-2 leading-tight bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent "
           >
             SAAN Coaching and Training Center
           </motion.h1>
