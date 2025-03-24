@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     "online classes nepal",
   ],
   authors: [{ name: "SAAN Coaching and Training Center" }],
+  verification: {
+    google: "0h6mLogELJG-SKu5XC5V5dTzYRqmcD02VKnpBTtHbz4", // Added Google Site Verification
+  },
   openGraph: {
     title: "SAAN Coaching and Training Center | Janakpur, Nepal",
     description: "SAAN Coaching Center in Janakpur offers bridge courses, computer classes, mobile repairing, and more. Online classes coming soon for students in Nepal.",
@@ -87,10 +90,13 @@ export default function RootLayout({
         {/* Viewport for responsive design */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        {/* Nepali Keywords for Local Search */}
+        {/* Google Site Verification */}
+        <meta name="google-site-verification" content="0h6mLogELJG-SKu5XC5V5dTzYRqmcD02VKnpBTtHbz4" />
+
+        {/* Corrected Nepali Keywords for Local Search */}
         <meta
           name="keywords"
-          content="सान कोचिङ सेन्टर, जानकीपुर कोचिङ सेन्टर, जानकीपुर कम्प्युटर सेन्टर, मोबाइल मर्मत जानकीपुर, अनलाइन कक्षा नेपाल"
+          content="सान कोचिङ सेन्टर, जनकपुर कोचिङ सेन्टर, जनकपुर कम्प्युटर सेन्टर, मोबाइल मर्मत जनकपुर, अनलाइन कक्षा नेपाल"
         />
 
         {/* Local Business Structured Data (JSON-LD) */}
@@ -185,9 +191,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Analytics />
-        <Header/>
+        <Header />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
