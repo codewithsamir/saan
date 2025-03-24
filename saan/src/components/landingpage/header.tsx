@@ -1,13 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Menu } from "lucide-react"; // For the hamburger menu icon
+import Link from "next/link";
 
 export default function Header() {
   return (
     <header className="bg-blue-600 text-white py-4 sticky top-0 left-0 z-50 shadow-md">
       <div className="w-full sm:w-[90%] mx-auto flex justify-between items-center px-4">
         {/* Logo/Name */}
-        <h1 className="text-2xl font-bold">SAAN Coaching</h1>
+       <Link href="/">
+       <h1 className="text-2xl font-bold">SAAN Coaching</h1>
+       </Link>
 
         {/* Navigation for Desktop */}
         <nav className="hidden md:flex space-x-4 md:items-center">

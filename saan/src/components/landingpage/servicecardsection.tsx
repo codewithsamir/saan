@@ -3,64 +3,63 @@ import { FaLaptopCode, FaBook, FaCode, FaGraduationCap, FaTools } from "react-ic
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { detailedServices } from "@/util/detailservice";
+import { ProgrammingLanguagesService } from "@/types";
 
 // Define the type for service cards
 interface ServiceCard {
   name: string;
   icon: React.ReactNode;
   highlight: boolean;
-  slug: string; // Add slug for navigation
+  slug: string;
 }
 
-// Mapping of service names to slugs (based on detailedServices)
-const serviceSlugMap: { [key: string]: string } = {
-  "Bridge Course & Entrance Preparation for +2": "bridge-course",
-  "Computer Classes (Basic-Advanced)": "computer-training",
-  "Coaching for Classes 5-10": "coaching",
-  "Mobile Repairing": "mobile-repairing",
-  "Programming Languages": "programming",
-  "Full Stack Web Development": "web-development",
-};
-
 const ServiceCardSection = () => {
-  const serviceCards: ServiceCard[] = [
+  // Define the base service cards (excluding Programming Languages)
+  const baseServiceCards: ServiceCard[] = [
     {
       name: "Bridge Course & Entrance Preparation for +2",
       icon: <FaGraduationCap className="text-4xl text-orange-500" />,
       highlight: true,
-      slug: serviceSlugMap["Bridge Course & Entrance Preparation for +2"],
+      slug: "bridge-course",
     },
     {
       name: "Computer Classes (Basic-Advanced)",
       icon: <FaLaptopCode className="text-4xl text-yellow-500" />,
       highlight: true,
-      slug: serviceSlugMap["Computer Classes (Basic-Advanced)"],
+      slug: "computer-training",
     },
     {
-      name: "Coaching for Classes 5-10",
+      name: "Coaching for Classes 6-10",
       icon: <FaBook className="text-4xl text-blue-500" />,
       highlight: false,
-      slug: serviceSlugMap["Coaching for Classes 5-10"],
+      slug: "coaching",
     },
     {
       name: "Mobile Repairing",
       icon: <FaTools className="text-4xl text-blue-500" />,
       highlight: false,
-      slug: serviceSlugMap["Mobile Repairing"],
-    },
-    {
-      name: "Programming Languages",
-      icon: <FaCode className="text-4xl text-blue-500" />,
-      highlight: false,
-      slug: serviceSlugMap["Programming Languages"],
+      slug: "mobile-repairing",
     },
     {
       name: "Full Stack Web Development",
-      icon: <FaLaptopCode className="text-4xl text-yellow-500" />,
+      icon:<FaCode  className="text-4xl text-yellow-500" />,
       highlight: true,
-      slug: serviceSlugMap["Full Stack Web Development"],
+      slug: "web-development",
     },
   ];
+
+  // Extract programming sub-courses
+  const programmingService = detailedServices.find((service) => service.id === "programming") as ProgrammingLanguagesService | undefined;
+  const programmingCards: ServiceCard[] = programmingService?.subCourses.map((subCourse) => ({
+    name: subCourse.title,
+    icon: <FaCode className="text-4xl text-blue-500" />,
+    highlight: false,
+    slug: subCourse.id,
+  })) || [];
+
+  // Combine all cards
+  const serviceCards = [...baseServiceCards.slice(0, 4), ...programmingCards, baseServiceCards[baseServiceCards.length - 1]];
 
   // Framer Motion animation variants for cards
   const cardVariants = {

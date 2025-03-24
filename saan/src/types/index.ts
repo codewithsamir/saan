@@ -1,27 +1,55 @@
 export interface Service {
-    title: string;
-    id: string;
-    details: string[];
-    image: string;
-    alt: string;
-    bgColor: string;
-    textColor: string;
-    buttonColor: string;
-    checkColor: string;
-  }
+  title: string;
+  id: string;
+  details: string[];
+  image: string;
+  alt: string;
+  bgColor: string;
+  textColor: string;
+  buttonColor: string;
+  checkColor: string;
+}
   
- export interface DetailedService extends Service {
-    description: string; // A detailed description of the course
-    duration: string; // Duration of the course (e.g., "3 Months", "6 Weeks")
-    targetAudience: string[]; // Who the course is for
-    prerequisites: string[]; // Prerequisites for the course
+  export interface DetailedService extends Service {
+    description: string;
+    duration: string;
+    targetAudience: string[];
+    prerequisites: string[];
     curriculum: {
-      basic?: string[]; // Basic topics (if applicable)
-      advanced?: string[]; // Advanced topics (if applicable)
-      other?: string[]; // Other topics (if neither basic nor advanced)
-    }; // Detailed curriculum
-    outcomes: string[]; // Learning outcomes
-    certification: string; // Certification details
-    price: string; // Price of the course
-    schedule: string; // Class schedule (e.g., "Mon-Fri, 2 hours/day")
+      basic?: string[];
+      advanced?: string[];
+      other?: string[];
+    };
+    outcomes: string[];
+    certification: string;
+    price: string;
+    schedule: string;
   }
+
+
+
+  // Define a type for sub-courses within the Programming Languages object
+export interface SubCourse {
+  title: string;
+  id: string;
+  details: string[];
+  image: string;
+  alt: string;
+  description: string;
+  duration: string;
+  targetAudience: string[];
+  prerequisites: string[];
+  curriculum: {
+    basic: string[];
+    advanced: string[];
+    other?: string[];
+  };
+  outcomes: string[];
+  certification: string;
+  price: string;
+  schedule: string;
+}
+
+export interface ProgrammingLanguagesService extends Omit<DetailedService, "details" | "description" | "duration" | "targetAudience" | "prerequisites" | "curriculum" | "outcomes" | "certification" | "price" | "schedule"> {
+  subCourses: SubCourse[];
+}

@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 // Define the props interface
 interface ServiceSectionProps {
@@ -114,6 +115,17 @@ export default function ServiceSection({
                 </motion.li>
               ))}
             </ul>
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                whileHover="hover" // Enable hover effect for all devices
+                variants={buttonVariants}
+              >
+                   <Link href={`/services/${id}`}>
+       <Button> Explore more</Button>
+       </Link>
+              </motion.div>
             {title === "Bridge Course & Entrance Preparation for +2" && (
               <motion.div
                 initial="hidden"
@@ -149,6 +161,8 @@ export default function ServiceSection({
             </div>
           </motion.div>
         </div>
+
+   
       </motion.div>
     </section>
   );

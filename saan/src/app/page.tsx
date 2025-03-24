@@ -1,6 +1,6 @@
 
 import {  services } from "@/util/service";
-import Header from "@/components/landingpage/header";
+
 import HeroSection from "@/components/landingpage/herosection";
 
 import ServiceSection from "@/components/landingpage/sections";
@@ -18,7 +18,7 @@ export default function Home() {
     <main suppressHydrationWarning>
       {/* Hero Section */}
      
-      <Header/>
+   
       <HeroSection/>
 
 {/* Example with a PDF */}
@@ -58,10 +58,7 @@ export default function Home() {
       {/* Contact Section */}
   <ContactSection/> 
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 text-center">
-        <p className="text-lg">© 2025 SAAN Coaching and Training Center. All rights reserved.</p>
-      </footer>
+     
     </main>
   );
 }

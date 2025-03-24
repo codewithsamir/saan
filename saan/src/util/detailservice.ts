@@ -1,6 +1,8 @@
-import { DetailedService } from "../types/index"; // Adjust the import path based on your project structure
+import { DetailedService, ProgrammingLanguagesService } from "../types/index"; // Adjust the import path based on your project structure
 
-const detailedServices: DetailedService[] = [
+
+
+const detailedServices: (DetailedService | ProgrammingLanguagesService )[] = [
   {
     title: "Bridge Course & Entrance Preparation for +2",
     id: "bridge-course",
@@ -52,8 +54,8 @@ const detailedServices: DetailedService[] = [
       "Develop confidence and exam-taking skills",
     ],
     certification: "Certificate of Completion for Bridge Course",
-    price: "NPR 15,000",
-    schedule: "Mon-Sat, 3 hours/day (Morning or Afternoon batches)",
+    price: "NPR 10,000",
+    schedule: "Mon-Sat, 2 hours/day (Morning or Afternoon batches)",
   },
   {
     title: "3-Month Computer Training",
@@ -62,6 +64,7 @@ const detailedServices: DetailedService[] = [
       "Master the Office Package (MS Word, Excel, PowerPoint) to Excel in School Projects",
       "Multimedia & Internet Skills: Learn Photo Editing and Online Productivity Tools",
       "AI for Work: Use ChatGPT, Create AI-Powered Resumes, and Explore Freelancing Basics",
+      "Introduction to Web Design: Learn HTML and CSS to Build Simple Websites",
       "Create Professional Documents and Presentations for Academic Success",
       "Hands-On Projects to Build Digital Skills for the Future",
       "Get Certified and Add Valuable Skills to Your Resume",
@@ -74,7 +77,7 @@ const detailedServices: DetailedService[] = [
     buttonColor: "bg-blue-500 hover:bg-blue-600",
     checkColor: "text-yellow-500",
     description:
-      "Our 3-Month Computer Training program is tailored for beginners and intermediate learners, focusing on essential digital skills for academic and professional success. From mastering Microsoft Office to exploring AI tools and multimedia, this course equips students with practical skills for the modern world.",
+      "Our 3-Month Computer Training program is tailored for beginners and intermediate learners, focusing on essential digital skills for academic and professional success. From mastering Microsoft Office to exploring AI tools, multimedia, and web design with HTML and CSS, this course equips students with practical skills for the modern world.",
     duration: "3 Months (Optional 6-Month Extended Program Available)",
     targetAudience: [
       "Post-SEE students looking to gain digital skills",
@@ -92,6 +95,7 @@ const detailedServices: DetailedService[] = [
         "Microsoft Excel: Spreadsheets, Formulas, Charts, Data Sorting",
         "Microsoft PowerPoint: Presentation Design, Slides, Animations",
         "Internet Basics: Browsing, Email, Online Safety",
+        "Web Design Basics: HTML (Structure, Tags, Forms), CSS (Styling, Selectors, Box Model)",
       ],
       advanced: [
         "Multimedia Skills: Photo Editing with Canva, Basic Video Editing",
@@ -101,7 +105,7 @@ const detailedServices: DetailedService[] = [
         "Cloud Tools: Google Drive, Docs, Sheets, and Collaboration",
       ],
       other: [
-        "Hands-On Projects: Create a Resume, Design a Presentation, Build a Digital Portfolio",
+        "Hands-On Projects: Create a Resume, Design a Presentation, Build a Digital Portfolio, Create a Simple Website",
         "Typing Skills: Improve Speed and Accuracy with Typing Software",
         "Cybersecurity Basics: Password Management, Avoiding Scams",
       ],
@@ -109,12 +113,13 @@ const detailedServices: DetailedService[] = [
     outcomes: [
       "Master essential computer skills for academic and professional use",
       "Create professional documents, presentations, and spreadsheets",
+      "Build simple websites using HTML and CSS",
       "Gain confidence in using AI tools and multimedia software",
       "Earn a certificate to enhance your resume",
       "Prepare for part-time jobs or freelancing opportunities",
     ],
     certification: "Certificate in Computer Literacy",
-    price: "NPR 10,000 (3 Months) / NPR 18,000 (6 Months)",
+    price: "NPR 7,000 (3 Months) / NPR 14,000 (6 Months)",
     schedule: "Mon-Fri, 2 hours/day (Morning or Evening batches)",
   },
   {
@@ -171,7 +176,7 @@ const detailedServices: DetailedService[] = [
       "Prepare for higher secondary education",
     ],
     certification: "Progress Report and Certificate of Participation",
-    price: "NPR 5,000/month",
+    price: "NPR 1,000/month",
     schedule: "Mon-Sat, 1.5 hours/day (After school hours)",
   },
   {
@@ -235,82 +240,200 @@ const detailedServices: DetailedService[] = [
   {
     title: "Programming Languages",
     id: "programming",
-    details: [
-      "Learn Popular Languages (Python, JavaScript, C++) with Step-by-Step Guidance",
-      "Build Exciting Projects Like Games, Websites, and Apps to Showcase Your Skills",
-      "Understand Algorithms and Data Structures to Solve Real-World Problems",
-      "Prepare for a High-Demand Career in Coding and Software Development",
-      "Participate in Coding Challenges and Competitions to Test Your Skills",
-      "Get Mentorship from Expert Programmers to Guide Your Journey",
-      "Start Your Coding Journey Today and Shape Your Future in Tech!",
-    ],
     image: "/coding class.jpg",
     alt: "coding class",
     bgColor: "bg-white",
     textColor: "text-blue-700",
     buttonColor: "bg-blue-500 hover:bg-blue-600",
     checkColor: "text-yellow-500",
-    description:
-      "Our Programming Languages course is designed for beginners and intermediate learners, covering a wide range of languages including HTML, CSS, JavaScript, Python, C, C++, and Java. With a focus on both basic and advanced topics, this course prepares students for a career in software development through hands-on projects and expert mentorship.",
-    duration: "6 Months",
-    targetAudience: [
-      "Beginners with no prior coding experience",
-      "Post-SEE students interested in a tech career",
-      "Intermediate learners looking to deepen their programming skills",
+    subCourses: [
+      {
+        title: "JavaScript Programming",
+        id: "javascript",
+        details: [
+          "Learn JavaScript with Step-by-Step Guidance for Beginners",
+          "Build Interactive Websites and Applications with Hands-On Projects",
+          "Understand Core Concepts Like Variables, Functions, and DOM Manipulation",
+          "Prepare for a Career in Web Development with JavaScript Skills",
+          "Participate in Coding Challenges to Test Your Knowledge",
+          "Get Mentorship from Expert Programmers to Guide Your Journey",
+          "Start Your Coding Journey with JavaScript Today!",
+        ],
+        image: "/javascript class.jpg",
+        alt: "javascript class",
+        description:
+          "Our JavaScript Programming course is designed for beginners and intermediate learners, focusing on building interactive web applications. Learn JavaScript from scratch, covering both basic and advanced concepts, and build projects to showcase your skills.",
+        duration: "3 Months",
+        targetAudience: [
+          "Beginners with no prior coding experience",
+          "Post-SEE students interested in web development",
+          "Intermediate learners looking to master JavaScript",
+        ],
+        prerequisites: [
+          "Basic computer literacy",
+          "No prior programming experience required",
+        ],
+        curriculum: {
+          basic: [
+            "Syntax, Variables, Data Types, Operators",
+            "Control Structures: Loops, Conditionals, Functions",
+            "DOM Manipulation: Selecting Elements, Event Handling",
+            "Arrays and Objects: Working with Data Structures",
+            "Error Handling: Try-Catch, Debugging Basics",
+          ],
+          advanced: [
+            "ES6+ Features: Arrow Functions, Destructuring, Modules",
+            "Asynchronous JavaScript: Promises, Async/Await, Fetch API",
+            "Closures and Scope: Understanding Lexical Scope",
+            "Working with APIs: Fetching Data, JSON Handling",
+            "JavaScript in the Browser: Event Delegation, Performance Optimization",
+          ],
+          other: [
+            "Projects: Build a To-Do List App, Create an Interactive Quiz",
+            "Coding Challenges: Solve Problems on Platforms Like LeetCode",
+            "Version Control: Introduction to Git and GitHub",
+          ],
+        },
+        outcomes: [
+          "Master JavaScript for web development",
+          "Build interactive web applications and projects",
+          "Understand modern JavaScript features (ES6+)",
+          "Prepare for a career in web development",
+          "Gain confidence in coding and problem-solving",
+        ],
+        certification: "Certificate in JavaScript Programming",
+        price: "NPR 5,000",
+        schedule: "Mon-Fri, 2 hours/day (Evening batches)",
+      },
+      {
+        title: "Python Programming",
+        id: "python",
+        details: [
+          "Learn Python with Step-by-Step Guidance for Beginners",
+          "Build Projects Like Calculators, Games, and Data Analysis Tools",
+          "Understand Core Concepts Like Loops, Functions, and Lists",
+          "Prepare for a Career in Software Development or Data Science",
+          "Participate in Coding Challenges to Test Your Skills",
+          "Get Mentorship from Expert Programmers to Guide Your Journey",
+          "Start Your Coding Journey with Python Today!",
+        ],
+        image: "/python class.jpg",
+        alt: "python class",
+        description:
+          "Our Python Programming course is designed for beginners and intermediate learners, focusing on building practical applications with Python. Learn Python from scratch, covering both basic and advanced concepts, and build projects to showcase your skills.",
+        duration: "3 Months",
+        targetAudience: [
+          "Beginners with no prior coding experience",
+          "Post-SEE students interested in software development or data science",
+          "Intermediate learners looking to master Python",
+        ],
+        prerequisites: [
+          "Basic computer literacy",
+          "No prior programming experience required",
+        ],
+        curriculum: {
+          basic: [
+            "Syntax, Variables, Data Types, Operators",
+            "Control Structures: Loops, Conditionals, Functions",
+            "Data Structures: Lists, Tuples, Dictionaries, Sets",
+            "File Handling: Reading and Writing Files",
+            "Error Handling: Try-Except, Debugging Basics",
+          ],
+          advanced: [
+            "Object-Oriented Programming: Classes, Objects, Inheritance",
+            "Modules and Libraries: Using NumPy, Pandas, Matplotlib",
+            "Working with APIs: Fetching Data, JSON Handling",
+            "Data Analysis Basics: Data Cleaning, Visualization",
+            "Automation: Scripting with Python (e.g., File Automation)",
+          ],
+          other: [
+            "Projects: Build a Calculator, Create a Simple Game, Analyze a Dataset",
+            "Coding Challenges: Solve Problems on Platforms Like HackerRank",
+            "Version Control: Introduction to Git and GitHub",
+          ],
+        },
+        outcomes: [
+          "Master Python for software development and data analysis",
+          "Build practical projects to showcase your skills",
+          "Understand Python libraries and frameworks",
+          "Prepare for a career in software development or data science",
+          "Gain confidence in coding and problem-solving",
+        ],
+        certification: "Certificate in Python Programming",
+        price: "NPR 5,000",
+        schedule: "Mon-Fri, 2 hours/day (Evening batches)",
+      },
+      {
+        title: "C Programming",
+        id: "c",
+        details: [
+          "Learn C Programming with Step-by-Step Guidance for Beginners",
+          "Build Projects Like Simple Applications and Data Structures",
+          "Understand Core Concepts Like Pointers, Arrays, and Functions",
+          "Prepare for a Career in System Programming or Software Development",
+          "Participate in Coding Challenges to Test Your Skills",
+          "Get Mentorship from Expert Programmers to Guide Your Journey",
+          "Start Your Coding Journey with C Today!",
+        ],
+        image: "/c class.jpg",
+        alt: "c class",
+        description:
+          "Our C Programming course is designed for beginners and intermediate learners, focusing on building a strong foundation in programming with C. Learn C from scratch, covering both basic and advanced concepts, and build projects to showcase your skills.",
+        duration: "3 Months",
+        targetAudience: [
+          "Beginners with no prior coding experience",
+          "Post-SEE students interested in system programming",
+          "Intermediate learners looking to master C",
+        ],
+        prerequisites: [
+          "Basic computer literacy",
+          "No prior programming experience required",
+        ],
+        curriculum: {
+          basic: [
+            "Syntax, Variables, Data Types, Operators",
+            "Control Structures: Loops, Conditionals, Functions",
+            "Arrays and Strings: Working with Arrays, String Manipulation",
+            "Pointers: Pointer Basics, Pointer Arithmetic",
+            "Memory Management: Dynamic Memory Allocation (malloc, free)",
+          ],
+          advanced: [
+            "Data Structures: Linked Lists, Stacks, Queues",
+            "File Handling: Reading and Writing Files",
+            "Advanced Pointers: Function Pointers, Pointer to Pointer",
+            "Bit Manipulation: Working with Bits, Bitwise Operators",
+            "System Programming Basics: Interfacing with OS",
+          ],
+          other: [
+            "Projects: Build a Simple Calculator, Implement a Linked List",
+            "Coding Challenges: Solve Problems on Platforms Like Codeforces",
+            "Version Control: Introduction to Git and GitHub",
+          ],
+        },
+        outcomes: [
+          "Master C programming for system-level development",
+          "Build foundational projects to showcase your skills",
+          "Understand data structures and memory management",
+          "Prepare for a career in system programming or software development",
+          "Gain confidence in coding and problem-solving",
+        ],
+        certification: "Certificate in C Programming",
+        price: "NPR 5,000",
+        schedule: "Mon-Fri, 2 hours/day (Evening batches)",
+      },
     ],
-    prerequisites: [
-      "Basic computer literacy",
-      "No prior programming experience required",
-    ],
-    curriculum: {
-      basic: [
-        "HTML: Structure of Web Pages, Tags, Attributes, Forms",
-        "CSS: Styling, Selectors, Box Model, Flexbox, Grid",
-        "JavaScript: Variables, Functions, DOM Manipulation, Events",
-        "Python: Syntax, Variables, Loops, Functions, Lists",
-        "C: Syntax, Variables, Loops, Functions, Pointers",
-        "C++: Syntax, OOP Concepts (Classes, Objects), Arrays",
-        "Java: Syntax, Variables, Loops, Methods, Classes",
-      ],
-      advanced: [
-        "HTML: Semantic HTML, Accessibility, SEO Basics",
-        "CSS: Animations, Transitions, Responsive Design, CSS Variables",
-        "JavaScript: ES6+, Async/Await, APIs, Closures, Modules",
-        "Python: Object-Oriented Programming, File Handling, Libraries (NumPy, Pandas)",
-        "C: Memory Management, Data Structures (Linked Lists, Stacks)",
-        "C++: Templates, STL (Standard Template Library), Exception Handling",
-        "Java: Collections, Multithreading, JDBC, Spring Framework Basics",
-        "Algorithms: Sorting, Searching, Recursion, Time Complexity",
-        "Data Structures: Arrays, Linked Lists, Stacks, Queues, Trees, Graphs",
-      ],
-      other: [
-        "Projects: Build a Website, Create a Calculator, Develop a Simple Game",
-        "Coding Challenges: Participate in Hackathons and Competitions",
-        "Version Control: Introduction to Git and GitHub",
-      ],
-    },
-    outcomes: [
-      "Master multiple programming languages and their applications",
-      "Build a portfolio of projects to showcase your skills",
-      "Understand algorithms and data structures for problem-solving",
-      "Prepare for a career in software development",
-      "Gain confidence in coding and project development",
-    ],
-    certification: "Certificate in Programming Languages",
-    price: "NPR 25,000",
-    schedule: "Mon-Fri, 2 hours/day (Evening batches)",
   },
   {
     title: "Full Stack Web Development",
     id: "web-development",
     details: [
-      "Master Frontend & Backend Development with HTML, CSS, JavaScript, and More",
-      "Build Real-World, Scalable Projects Like E-Commerce Sites and Blogs",
+      "Master Frontend with HTML, CSS, JavaScript, React, and Next.js",
+      "Learn Backend Development with Python, Django, and PostgreSQL",
       "Work with Git & GitHub to Collaborate on Projects Like a Pro",
+      "Build Real-World, Scalable Projects Like E-Commerce Sites and Blogs",
       "Create and Manage APIs & Databases for Dynamic Web Applications",
-      "Deploy Your Projects Online and Build a Portfolio to Impress Employers",
+      "Deploy Your Projects Online with Vercel or Netlify",
       "Get Job-Ready with Skills in High Demand Across Nepal and Globally",
-      "Learn from Industry Experts and Start Your Career in Web Development!",
     ],
     image: "/webdevelopment.jpg",
     alt: "web development",
@@ -319,7 +442,7 @@ const detailedServices: DetailedService[] = [
     buttonColor: "bg-blue-500 hover:bg-blue-600",
     checkColor: "text-yellow-500",
     description:
-      "Our Full Stack Web Development course takes you from beginner to job-ready developer, covering both frontend and backend technologies. Learn to build dynamic, scalable web applications using modern tools and frameworks, and deploy your projects online to build a professional portfolio.",
+      "Our Full Stack Web Development course takes you from beginner to job-ready developer, covering both frontend and backend technologies. Learn to build dynamic, scalable web applications using HTML, CSS, JavaScript, React, Next.js, Python, Django, and PostgreSQL, and deploy your projects online to build a professional portfolio.",
     duration: "6 Months",
     targetAudience: [
       "Beginners interested in a career in web development",
@@ -339,12 +462,12 @@ const detailedServices: DetailedService[] = [
         "Frontend Tools: VS Code, Browser DevTools",
       ],
       advanced: [
-        "Frontend Frameworks: React (Components, Hooks, State Management)",
-        "Backend Development: Node.js, Express.js, REST APIs",
-        "Databases: MongoDB (CRUD Operations), SQL Basics (MySQL)",
-        "Authentication: JWT, OAuth, User Login Systems",
-        "Deployment: Vercel, Netlify, Heroku, Domain Management",
-        "Testing: Unit Testing with Jest, Debugging",
+        "Frontend Frameworks: React (Components, Hooks, State Management), Next.js (Routing, SSG, SSR)",
+        "Backend Development: Python (Syntax, Functions), Django (Models, Views, Templates)",
+        "Databases: PostgreSQL (Tables, Queries, Relationships), Django ORM",
+        "APIs: REST API with Django REST Framework, Fetching Data",
+        "Authentication: JWT, Django Authentication, User Login Systems",
+        "Deployment: Vercel, Netlify, Railway (for Django), Domain Management",
       ],
       other: [
         "Projects: Build an E-Commerce Site, Create a Blog, Develop a Task Manager",
@@ -355,7 +478,7 @@ const detailedServices: DetailedService[] = [
     outcomes: [
       "Build and deploy full stack web applications",
       "Create a professional portfolio with real-world projects",
-      "Master frontend and backend development skills",
+      "Master frontend (React, Next.js) and backend (Django, PostgreSQL) development",
       "Prepare for job roles like Full Stack Developer, Web Developer",
       "Gain confidence in working with modern web technologies",
     ],

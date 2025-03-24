@@ -1,12 +1,12 @@
 "use client";
 import { FaFacebook, FaYoutube, FaWhatsapp, FaEnvelope, FaGraduationCap } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const ContactSection = () => {
   // Framer Motion animation variants for the section
-  const sectionVariants = {
+  const sectionVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
@@ -16,7 +16,7 @@ const ContactSection = () => {
   };
 
   // Animation for paragraphs
-  const textVariants = {
+  const textVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
       opacity: 1,
@@ -26,7 +26,7 @@ const ContactSection = () => {
   };
 
   // Animation for the buttons
-  const buttonVariants = {
+  const buttonVariants: Variants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: (i: number) => ({
       opacity: 1,
@@ -41,7 +41,7 @@ const ContactSection = () => {
   };
 
   // Animation for floating elements
-  const floatingVariants = {
+  const floatingVariants: Variants = {
     animate: {
       y: [0, 15, 0],
       rotate: [0, 10, 0],
@@ -49,34 +49,34 @@ const ContactSection = () => {
       transition: {
         duration: Math.random() * 4 + 4,
         repeat: Infinity,
-        repeatType: "loop",
+        repeatType: "loop" as const, // Explicitly type as "loop"
         ease: "easeInOut",
       },
     },
   };
 
   // Animation for the wave
-  const waveVariants = {
+  const waveVariants: Variants = {
     animate: {
       x: [0, -50, 0],
       transition: {
         duration: 10,
         repeat: Infinity,
-        repeatType: "loop",
+        repeatType: "loop" as const, // Explicitly type as "loop"
         ease: "easeInOut",
       },
     },
   };
 
   // Animation for decorative circles
-  const circleVariants = {
+  const circleVariants: Variants = {
     animate: {
       scale: [1, 1.2, 1],
       opacity: [0.3, 0.5, 0.3],
       transition: {
         duration: 3,
         repeat: Infinity,
-        repeatType: "loop",
+        repeatType: "loop" as const, // Explicitly type as "loop"
         ease: "easeInOut",
       },
     },

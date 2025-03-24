@@ -10,6 +10,7 @@ import {
   CarouselPrevious,
   type CarouselApi, // Import the CarouselApi type
 } from "@/components/ui/carousel";
+import Image from "next/image";
 
 const GallerySection = () => {
   // Your image paths
@@ -52,9 +53,11 @@ const GallerySection = () => {
               <CarouselItem key={index} className="pl-1">
                 <Card className="border-none shadow-lg h-full">
                   <CardContent className="p-0 h-full flex items-center justify-center">
-                    <img
+                    <Image
                       src={image.src}
                       alt={image.alt}
+                      width={500}
+                      height={500}
                       className="w-full h-full object-cover rounded-lg"
                     />
                   </CardContent>
