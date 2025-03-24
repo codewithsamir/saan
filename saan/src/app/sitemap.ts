@@ -1,47 +1,80 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://saan-psi.vercel.app";
+  const lastModified = new Date(); // Single timestamp for consistency
+
   return [
     {
-      url: "https://saan-psi.vercel.app/",
-      lastModified: new Date(),
-      changeFrequency: "weekly",
+      url: `${baseUrl}/`,
+      lastModified,
+      changeFrequency: "weekly" as const,
       priority: 1.0,
     },
     {
-      url: "https://saan-psi.vercel.app/services/bridge-course",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      url: `${baseUrl}/services/bridge-course`,
+      lastModified,
+      changeFrequency: "monthly" as const,
       priority: 0.8,
     },
     {
-      url: "https://saan-psi.vercel.app/services/computer-training",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      url: `${baseUrl}/services/computer-training`,
+      lastModified,
+      changeFrequency: "monthly" as const,
       priority: 0.8,
     },
     {
-      url: "https://saan-psi.vercel.app/services/coaching",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      url: `${baseUrl}/services/coaching`,
+      lastModified,
+      changeFrequency: "monthly" as const,
       priority: 0.8,
     },
     {
-      url: "https://saan-psi.vercel.app/services/mobile-repairing",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      url: `${baseUrl}/services/mobile-repairing`,
+      lastModified,
+      changeFrequency: "monthly" as const,
       priority: 0.8,
     },
     {
-      url: "https://saan-psi.vercel.app/services/programming",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      url: `${baseUrl}/services/programming`,
+      lastModified,
+      changeFrequency: "monthly" as const,
       priority: 0.8,
     },
     {
-      url: "https://saan-psi.vercel.app/services/web-development",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      url: `${baseUrl}/services/javascript`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/python`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/c`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/cpp`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/java`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/web-development`,
+      lastModified,
+      changeFrequency: "monthly" as const,
       priority: 0.8,
     },
   ];
