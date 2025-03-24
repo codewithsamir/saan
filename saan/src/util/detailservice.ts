@@ -1,8 +1,6 @@
 import { DetailedService, ProgrammingLanguagesService } from "../types/index"; // Adjust the import path based on your project structure
 
-
-
-const detailedServices: (DetailedService | ProgrammingLanguagesService )[] = [
+const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
   {
     title: "Bridge Course & Entrance Preparation for +2",
     id: "bridge-course",
@@ -418,6 +416,122 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService )[] = [
           "Gain confidence in coding and problem-solving",
         ],
         certification: "Certificate in C Programming",
+        price: "NPR 5,000",
+        schedule: "Mon-Fri, 2 hours/day (Evening batches)",
+      },
+      {
+        title: "C++ Programming",
+        id: "cpp",
+        details: [
+          "Learn C++ Programming with Step-by-Step Guidance for Beginners",
+          "Build Projects Like Games, Applications, and Data Structures",
+          "Understand Core Concepts Like Classes, Objects, and Templates",
+          "Prepare for a Career in Software Development or Competitive Programming",
+          "Participate in Coding Challenges to Test Your Skills",
+          "Get Mentorship from Expert Programmers to Guide Your Journey",
+          "Start Your Coding Journey with C++ Today!",
+        ],
+        image: "/cpp class.jpg",
+        alt: "C++ class",
+        description:
+          "Our C++ Programming course is designed for beginners and intermediate learners, focusing on building a strong foundation in programming with C++. Learn C++ from scratch, covering both basic and advanced concepts, and build projects to showcase your skills.",
+        duration: "3 Months",
+        targetAudience: [
+          "Beginners with no prior coding experience",
+          "Post-SEE students interested in software development or competitive programming",
+          "Intermediate learners looking to master C++",
+        ],
+        prerequisites: [
+          "Basic computer literacy",
+          "No prior programming experience required (knowledge of C is a plus)",
+        ],
+        curriculum: {
+          basic: [
+            "Syntax, Variables, Data Types, Operators",
+            "Control Structures: Loops, Conditionals, Functions",
+            "Arrays and Strings: Working with Arrays, String Manipulation",
+            "Pointers: Pointer Basics, Pointer Arithmetic",
+            "Memory Management: Dynamic Memory Allocation (new, delete)",
+          ],
+          advanced: [
+            "Object-Oriented Programming: Classes, Objects, Inheritance, Polymorphism",
+            "STL (Standard Template Library): Vectors, Maps, Sets",
+            "Templates: Function Templates, Class Templates",
+            "File Handling: Reading and Writing Files",
+            "Advanced Concepts: Exception Handling, Lambda Expressions",
+          ],
+          other: [
+            "Projects: Build a Simple Game, Implement a Data Structure (e.g., Binary Tree)",
+            "Coding Challenges: Solve Problems on Platforms Like Codeforces",
+            "Version Control: Introduction to Git and GitHub",
+          ],
+        },
+        outcomes: [
+          "Master C++ programming for software development",
+          "Build projects to showcase your skills",
+          "Understand object-oriented programming and STL",
+          "Prepare for a career in software development or competitive programming",
+          "Gain confidence in coding and problem-solving",
+        ],
+        certification: "Certificate in C++ Programming",
+        price: "NPR 5,000",
+        schedule: "Mon-Fri, 2 hours/day (Evening batches)",
+      },
+      {
+        title: "Java Programming",
+        id: "java",
+        details: [
+          "Learn Java Programming with Step-by-Step Guidance for Beginners",
+          "Build Projects Like Applications, Games, and Backend Systems",
+          "Understand Core Concepts Like Classes, Objects, and Collections",
+          "Prepare for a Career in Software Development or Android App Development",
+          "Participate in Coding Challenges to Test Your Skills",
+          "Get Mentorship from Expert Programmers to Guide Your Journey",
+          "Start Your Coding Journey with Java Today!",
+        ],
+        image: "/java class.jpg",
+        alt: "Java class",
+        description:
+          "Our Java Programming course is designed for beginners and intermediate learners, focusing on building robust applications with Java. Learn Java from scratch, covering both basic and advanced concepts, and build projects to showcase your skills.",
+        duration: "3 Months",
+        targetAudience: [
+          "Beginners with no prior coding experience",
+          "Post-SEE students interested in software development or Android app development",
+          "Intermediate learners looking to master Java",
+        ],
+        prerequisites: [
+          "Basic computer literacy",
+          "No prior programming experience required",
+        ],
+        curriculum: {
+          basic: [
+            "Syntax, Variables, Data Types, Operators",
+            "Control Structures: Loops, Conditionals, Methods",
+            "Arrays and Strings: Working with Arrays, String Manipulation",
+            "Object-Oriented Programming: Classes, Objects, Constructors",
+            "Exception Handling: Try-Catch, Throwing Exceptions",
+          ],
+          advanced: [
+            "Collections Framework: ArrayList, HashMap, HashSet",
+            "File Handling: Reading and Writing Files with Java I/O",
+            "Multithreading: Threads, Synchronization",
+            "Java OOP: Inheritance, Polymorphism, Abstraction, Encapsulation",
+            "Introduction to JavaFX: Building Simple GUI Applications",
+          ],
+          other: [
+            "Projects: Build a Simple Banking System, Create a Quiz Application",
+            "Coding Challenges: Solve Problems on Platforms Like HackerRank",
+            "Version Control: Introduction to Git and GitHub",
+          ],
+        },
+        outcomes: [
+          "Master Java programming for software development",
+          "Build robust applications to showcase your skills",
+          "Understand object-oriented programming and Java libraries",
+          "Prepare for a career in software development or Android app development",
+          "Gain confidence in coding and problem-solving",
+        ],
+        certification: "Certificate in Java Programming",
         price: "NPR 5,000",
         schedule: "Mon-Fri, 2 hours/day (Evening batches)",
       },

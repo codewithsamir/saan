@@ -121,6 +121,7 @@ export default function ServiceSection({
                 viewport={{ once: true }}
                 whileHover="hover" // Enable hover effect for all devices
                 variants={buttonVariants}
+                className="mt-2"
               >
                    <Link href={`/services/${id}`}>
        <Button> Explore more</Button>
