@@ -7,7 +7,6 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
   <!-- Service Pages based on detailedServices IDs -->
   <url>
     <loc>https://saan-psi.vercel.app/services/bridge-course</loc>

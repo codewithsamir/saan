@@ -3,4 +3,4 @@ Allow: /
 Disallow: /private/*
 Disallow: /admin/*
 
-Sitemap: https://saan-psi.vercel.app/saan-t-c-sitemap.xml
+Sitemap: https://saan-psi.vercel.app/sitemap.xml
