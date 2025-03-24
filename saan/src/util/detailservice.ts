@@ -127,7 +127,7 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
       "Interactive Classes with Fun Activities for Better Understanding",
       "Focus on Core Subjects (Math, Science, English, Social Studies, and Nepali)",
       "Regular Assessments with Progress Reports to Track Your Growth",
-      "Learn from Experienced Teachers Specializing in Classes 5-10 Curriculum",
+      "Learn from Experienced Teachers Specializing in Classes 6-10 Curriculum",
       "Small Batch Sizes for Personalized Attention and Doubt Clearing",
       "Exam Preparation Tips to Score High in SEE and School Exams",
       "Build a Strong Foundation for Your Academic Future in Nepal!",
@@ -175,7 +175,7 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
     ],
     certification: "Progress Report and Certificate of Participation",
     price: "NPR 1,000/month",
-    schedule: "Mon-Sat, 1.5 hours/day (After school hours)",
+    schedule: "sun-fri, 1.5 hours/day (After school hours)",
   },
   {
     title: "Mobile Repairing",
