@@ -54,6 +54,7 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
     certification: "Certificate of Completion for Bridge Course",
     price: "NPR 10,000",
     schedule: "Mon-Sat, 2 hours/day (Morning or Afternoon batches)",
+    discount: 50, // Added 10% discount
   },
   {
     title: "3-Month Computer Training",
@@ -76,7 +77,7 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
     checkColor: "text-yellow-500",
     description:
       "Our 3-Month Computer Training program is tailored for beginners and intermediate learners, focusing on essential digital skills for academic and professional success. From mastering Microsoft Office to exploring AI tools, multimedia, and web design with HTML and CSS, this course equips students with practical skills for the modern world.",
-    duration: "3 Months (Optional 6-Month Extended Program Available)",
+    duration: "3 Months (Optional 6-Month Extended Program Available) and  NPR 7,000 (3 Months) / NPR 14,000 (6 Months)",
     targetAudience: [
       "Post-SEE students looking to gain digital skills",
       "Beginners with little to no computer experience",
@@ -117,8 +118,9 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
       "Prepare for part-time jobs or freelancing opportunities",
     ],
     certification: "Certificate in Computer Literacy",
-    price: "NPR 7,000 (3 Months) / NPR 14,000 (6 Months)",
-    schedule: "Mon-Fri, 2 hours/day (Morning or Evening batches)",
+    price:"7000",
+    schedule: "Sun-Fri, 2 hours/day (Morning or Evening batches)",
+    discount: 50, // Added 15% discount
   },
   {
     title: "Coaching for Classes 6-10",
@@ -173,9 +175,10 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
       "Gain confidence in core subjects",
       "Prepare for higher secondary education",
     ],
-    certification: "Progress Report and Certificate of Participation",
+    certification: "",
     price: "NPR 1,000/month",
     schedule: "sun-fri, 1.5 hours/day (After school hours)",
+    // No discount for this service
   },
   {
     title: "Mobile Repairing",
@@ -232,8 +235,9 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
       "Gain confidence in diagnosing and fixing smartphone issues",
     ],
     certification: "Certificate in Mobile Repairing",
-    price: "NPR 20,000",
-    schedule: "Mon-Fri, 3 hours/day (Morning or Afternoon batches)",
+    price: "NPR 40,000",
+    schedule: "Sun-Fri, 2 hours/day (Morning or Afternoon batches)",
+    discount: 50, // Added 20% discount
   },
   {
     title: "Programming Languages",
@@ -301,7 +305,8 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
         ],
         certification: "Certificate in JavaScript Programming",
         price: "NPR 5,000",
-        schedule: "Mon-Fri, 2 hours/day (Evening batches)",
+        schedule: "Sun-Fri, 2 hours/day (Evening batches)",
+        discount: 50, // Added 10% discount
       },
       {
         title: "Python Programming",
@@ -359,7 +364,8 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
         ],
         certification: "Certificate in Python Programming",
         price: "NPR 5,000",
-        schedule: "Mon-Fri, 2 hours/day (Evening batches)",
+        schedule: "Sun-Fri, 2 hours/day (Evening batches)",
+        discount: 50, // Added 10% discount
       },
       {
         title: "C Programming",
@@ -417,7 +423,8 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
         ],
         certification: "Certificate in C Programming",
         price: "NPR 5,000",
-        schedule: "Mon-Fri, 2 hours/day (Evening batches)",
+        schedule: "Sun-Fri, 2 hours/day (Evening batches)",
+        discount: 50, // Added 10% discount
       },
       {
         title: "C++ Programming",
@@ -475,7 +482,8 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
         ],
         certification: "Certificate in C++ Programming",
         price: "NPR 5,000",
-        schedule: "Mon-Fri, 2 hours/day (Evening batches)",
+        schedule: "Sun-Fri, 2 hours/day (Evening batches)",
+        discount: 50, // Added 10% discount
       },
       {
         title: "Java Programming",
@@ -533,7 +541,8 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
         ],
         certification: "Certificate in Java Programming",
         price: "NPR 5,000",
-        schedule: "Mon-Fri, 2 hours/day (Evening batches)",
+        schedule: "Sun-Fri, 2 hours/day (Evening batches)",
+        discount: 50, // Added 10% discount
       },
     ],
   },
@@ -597,8 +606,9 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
       "Gain confidence in working with modern web technologies",
     ],
     certification: "Certificate in Full Stack Web Development",
-    price: "NPR 35,000",
-    schedule: "Mon-Fri, 3 hours/day (Morning or Evening batches)",
+    price: "NPR 40,000",
+    schedule: "Sun-Fri, 3 hours/day (Morning or Evening batches)",
+    discount: 50, // Added 25% discount
   },
 ];
 

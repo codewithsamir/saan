@@ -5,6 +5,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { DetailedService, ProgrammingLanguagesService, SubCourse, Service } from "@/types";
 
+
 // Define the props interface for the page
 interface ServiceDetailPageProps {
   params: Promise<{ serviceid: string }>; // Use Promise for params to allow await
@@ -33,6 +34,29 @@ const CheckCircleSVG = ({ className }: { className: string }) => (
   </svg>
 );
 
+// Function to calculate discounted price
+const calculateDiscountedPrice = (price: string, discount: number): string => {
+  // Extract the numeric price (handle cases like "NPR 7,000 (3 Months) / NPR 14,000 (6 Months)")
+  const priceParts = price.split("/");
+  const firstPrice = priceParts[0].replace(/[^0-9]/g, ""); // Extract first price (e.g., "7000")
+  const originalPrice = parseFloat(firstPrice);
+
+  if (isNaN(originalPrice)) return price; // Return original price if parsing fails
+
+  const discountedPrice = originalPrice - (originalPrice * (discount / 100));
+  const formattedDiscountedPrice = `NPR ${Math.round(discountedPrice).toLocaleString()}`;
+
+  // If there's a second price (e.g., for 6 months), calculate its discount too
+  if (priceParts.length > 1) {
+    const secondPrice = priceParts[1].replace(/[^0-9]/g, ""); // Extract second price (e.g., "14000")
+    const originalSecondPrice = parseFloat(secondPrice);
+    const discountedSecondPrice = originalSecondPrice - (originalSecondPrice * (discount / 100));
+    return `${formattedDiscountedPrice} (3 Months) / NPR ${Math.round(discountedSecondPrice).toLocaleString()} (6 Months)`;
+  }
+
+  return formattedDiscountedPrice;
+};
+
 export default async function ServiceDetailPage({ params }: ServiceDetailPageProps) {
   // Await the params to get the serviceid
   const { serviceid } = await params;
@@ -55,12 +79,14 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
     notFound();
   }
 
-// Extract styling from the top-level service (for sub-courses, use the parent styling)
-const parentService = detailedServices.find((s) => s.id === "programming" && "subCourses" in s) as ProgrammingLanguagesService | undefined;
-// Ensure styling is always a Service by providing a default details array for ProgrammingLanguagesService
-const styling: Service = isSubCourse(service) && parentService 
-  ? { ...parentService, details: [] } // Add default details to satisfy Service interface
-  : service as DetailedService;
+  // Extract styling from the top-level service (for sub-courses, use the parent styling)
+  const parentService = detailedServices.find((s) => s.id === "programming" && "subCourses" in s) as ProgrammingLanguagesService | undefined;
+  // Ensure styling is always a Service by providing a default details array for ProgrammingLanguagesService
+  const styling: Service = isSubCourse(service) && parentService 
+    ? { ...parentService, details: [] } // Add default details to satisfy Service interface
+    : service as DetailedService;
+
+
 
   return (
     <>
@@ -74,8 +100,40 @@ const styling: Service = isSubCourse(service) && parentService
         </Link>
 
         <div className="max-w-4xl mx-auto">
-          {/* Header Section */}
-          <div className={`p-6 rounded-lg shadow-md ${styling.bgColor}`}>
+          {/* Header Section with Discount Badge */}
+          <div className={`p-6 rounded-lg shadow-md ${styling.bgColor} relative`}>
+            {/* Conditionally render the discount badge */}
+            {service.discount && (
+           <div className="absolute top-[-60px] right-0 transform  translate-x-4 -translate-y-6 md:translate-x-2 md:-translate-y-4">
+           <div className="relative">
+             <svg
+               className="w-44 h-36 md:w-48 md:h-40"
+               viewBox="0 0 180 150"
+               fill="none"
+               xmlns="http://www.w3.org/2000/svg"
+             >
+               <path
+                 d="M20 30C40 10, 80 20, 100 40C120 60, 140 40, 160 30C160 90, 140 120, 100 130C60 140, 40 120, 20 90C0 60, 0 40, 20 30Z"
+                 fill="url(#yellowOrangeGradient)"
+                 stroke="white"
+                 strokeWidth="2"
+               />
+               <defs>
+                 <linearGradient id="yellowOrangeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                   <stop offset="0%" style={{ stopColor: "#FFD700", stopOpacity: 1 }} />
+                   <stop offset="100%" style={{ stopColor: "#FF4500", stopOpacity: 1 }} />
+                 </linearGradient>
+               </defs>
+             </svg>
+             <div className="absolute inset-0 flex flex-col items-center justify-center text-white font-bold">
+               <span className="text-3xl md:text-4xl">{service.discount}%</span>
+               <span className="text-base md:text-lg">DISCOUNT</span>
+             </div>
+           </div>
+         </div>
+         
+            )}
+
             <h1 className={`text-3xl font-bold ${styling.textColor} mb-4`}>{service.title}</h1>
             <div className="flex flex-col md:flex-row gap-6">
               <div className="md:w-1/2">
@@ -90,7 +148,18 @@ const styling: Service = isSubCourse(service) && parentService
               <div className="md:w-1/2">
                 <p className="text-gray-700 mb-4">{service.description}</p>
                 <p className="text-gray-800 font-semibold mb-2">Duration: {service.duration}</p>
-                <p className="text-gray-800 font-semibold mb-2">Price: {service.price}</p>
+                <p className="text-gray-800 font-semibold mb-2">
+                  Price: {service.discount ? (
+                    <>
+                      <s>{service.price}</s> {/* Strikethrough original price */}
+                      <span className="ml-2 text-green-600">
+                        {calculateDiscountedPrice(service.price, service.discount)}
+                      </span>
+                    </>
+                  ) : (
+                    service.price
+                  )}
+                </p>
                 <p className="text-gray-800 font-semibold mb-4">Schedule: {service.schedule}</p>
                 <button
                   className={`px-6 py-2 rounded-lg text-white ${styling.buttonColor} transition-colors duration-300`}

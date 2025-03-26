@@ -15,6 +15,7 @@ interface ServiceSectionProps {
   textColor: string;
   buttonColor: string;
   checkColor: string;
+  discount?: number;
 }
 
 export default function ServiceSection({
@@ -27,6 +28,7 @@ export default function ServiceSection({
   textColor,
   buttonColor,
   checkColor,
+  discount,
 }: ServiceSectionProps) {
   // Framer Motion animation variants for the section
   const sectionVariants = {
@@ -51,7 +53,11 @@ export default function ServiceSection({
   // Animation for the button
   const buttonVariants = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1, transition: { delay: 0.5, duration: 0.5 } },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { delay: 0.5, duration: 0.5 },
+    },
     hover: { scale: 1.05, transition: { duration: 0.3 } },
   };
 
@@ -60,6 +66,57 @@ export default function ServiceSection({
     hidden: { opacity: 0, scale: 0.9 },
     visible: { opacity: 1, scale: 1, transition: { delay: 0.3, duration: 0.8 } },
     hover: { scale: 1.02, transition: { duration: 0.3 } },
+  };
+
+  // Enhanced animation for the discount badge
+  const discountVariants = {
+    hidden: { opacity: 0, scale: 0, rotate: -30 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        delay: 0.3,
+        duration: 0.7,
+        type: "spring",
+        stiffness: 120,
+        damping: 10,
+      },
+    },
+    hover: {
+      scale: 1.2,
+      rotate: 5,
+      filter: "brightness(1.3) drop-shadow(0 0 15px rgba(255, 255, 255, 0.8))",
+      transition: { duration: 0.3 },
+    },
+    animate: {
+      scale: [1, 1.1, 1],
+      filter: [
+        "brightness(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.5))",
+        "brightness(1.2) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8))",
+        "brightness(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.5))",
+      ],
+      transition: {
+        repeat: Infinity,
+        duration: 2,
+        ease: "easeInOut",
+      },
+    },
+  };
+
+  // Animation for decorative elements
+  const decorVariants = {
+    hidden: { opacity: 0, scale: 0 },
+    visible: {
+      opacity: [0, 1, 0],
+      scale: [0, 1.5, 0],
+      transition: {
+        repeat: Infinity,
+        duration: 2,
+        ease: "easeInOut",
+        delay: Math.random() * 1,
+      },
+    },
   };
 
   return (
@@ -96,7 +153,69 @@ export default function ServiceSection({
         variants={sectionVariants}
       >
         <h2 className="text-4xl font-bold text-center text-gray-800 mb-10">{title}</h2>
-        <div className="flex flex-col md:flex-row items-center gap-8 bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg border-l-4 border-blue-500">
+        <div className="relative flex flex-col md:flex-row items-center gap-8 bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg border-l-4 border-blue-500">
+          {/* Conditionally render the discount badge */}
+          {discount && (
+            <motion.div
+              className="absolute top-0 right-0 transform z-50 translate-x-4 -translate-y-6 md:translate-x-2 md:-translate-y-4"
+              initial="hidden"
+              whileInView="visible"
+              animate="animate"
+              whileHover="hover"
+              viewport={{ once: true }}
+              variants={discountVariants}
+            >
+              <div className="relative">
+                {/* Curved Wave Shape using SVG */}
+                <svg
+                  className="w-44 h-36 md:w-48 md:h-40"
+                  viewBox="0 0 180 150"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 30C40 10, 80 20, 100 40C120 60, 140 40, 160 30C160 90, 140 120, 100 130C60 140, 40 120, 20 90C0 60, 0 40, 20 30Z"
+                    fill="url(#yellowOrangeGradient)"
+                    stroke="white"
+                    strokeWidth="2"
+                  />
+                  <defs>
+                    <linearGradient id="yellowOrangeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{ stopColor: "#FFD700", stopOpacity: 1 }} /> {/* Bright Yellow */}
+                      <stop offset="100%" style={{ stopColor: "#FF4500", stopOpacity: 1 }} /> {/* Vibrant Orange */}
+                    </linearGradient>
+                  </defs>
+                </svg>
+
+                {/* Discount Text */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white font-bold">
+                  <span className="text-3xl md:text-4xl">{discount}%</span>
+                  <span className="text-base md:text-lg">DISCOUNT</span>
+                </div>
+
+                {/* Decorative Elements */}
+                <motion.div
+                  className="absolute top-0 left-0 w-4 h-4 bg-yellow-300 rounded-full opacity-50"
+                  variants={decorVariants}
+                  initial="hidden"
+                  animate="visible"
+                />
+                <motion.div
+                  className="absolute bottom-0 right-0 w-3 h-3 bg-orange-300 rounded-full opacity-50"
+                  variants={decorVariants}
+                  initial="hidden"
+                  animate="visible"
+                />
+                <motion.div
+                  className="absolute top-4 right-2 w-2 h-2 bg-yellow-200 rounded-full opacity-50"
+                  variants={decorVariants}
+                  initial="hidden"
+                  animate="visible"
+                />
+              </div>
+            </motion.div>
+          )}
+
           <div className="md:w-1/2">
             <h3 className={`text-2xl font-semibold ${textColor} mb-4`}>What You'll Learn:</h3>
             <ul className="space-y-2">
@@ -116,23 +235,23 @@ export default function ServiceSection({
               ))}
             </ul>
             <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                whileHover="hover" // Enable hover effect for all devices
-                variants={buttonVariants}
-                className="mt-2"
-              >
-                   <Link href={`/services/${id}`}>
-       <Button> Explore more</Button>
-       </Link>
-              </motion.div>
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              whileHover="hover"
+              variants={buttonVariants}
+              className="mt-2"
+            >
+              <Button asChild>
+                <Link href={`/services/${id}`}>Explore more</Link>
+              </Button>
+            </motion.div>
             {title === "Bridge Course & Entrance Preparation for +2" && (
               <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                whileHover="hover" // Enable hover effect for all devices
+                whileHover="hover"
                 variants={buttonVariants}
               >
                 <Button asChild className={`mt-6 ${buttonColor}`}>
@@ -148,7 +267,7 @@ export default function ServiceSection({
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            whileHover="hover" // Enable hover effect for all devices
+            whileHover="hover"
             variants={imageVariants}
           >
             <div className="h-[300px] rounded-lg flex items-center justify-center overflow-hidden shadow-lg">
@@ -162,8 +281,6 @@ export default function ServiceSection({
             </div>
           </motion.div>
         </div>
-
-   
       </motion.div>
     </section>
   );

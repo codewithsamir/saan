@@ -50,6 +50,7 @@ export default function Home() {
           textColor={service.textColor}
           buttonColor={service.buttonColor}
           checkColor={service.checkColor}
+          discount={service.discount}
         />
       ))}
 

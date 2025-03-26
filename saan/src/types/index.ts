@@ -8,6 +8,7 @@ export interface Service {
   textColor: string;
   buttonColor: string;
   checkColor: string;
+  discount?:number;
 }
   
   export interface DetailedService extends Service {
@@ -24,6 +25,7 @@ export interface Service {
     certification: string;
     price: string;
     schedule: string;
+    discount?:number;
   }
 
 
@@ -48,6 +50,8 @@ export interface SubCourse {
   certification: string;
   price: string;
   schedule: string;
+  discount?:number;
+
 }
 
 export interface ProgrammingLanguagesService extends Omit<DetailedService, "details" | "description" | "duration" | "targetAudience" | "prerequisites" | "curriculum" | "outcomes" | "certification" | "price" | "schedule"> {
