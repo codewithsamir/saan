@@ -236,13 +236,13 @@ const HeroSection = () => {
     <DecorativeCircle key={i} x={circle.x} y={circle.y} size={circle.size} color={circle.color} />
   ));
 
-  // Floating Service Icons around the Image (With Opposite Colors and Adjusted Mobile Positions)
+  // Floating Service Icons around the Image (With Opposite Colors and Responsive Positions)
   const floatingServices = [
-    { Icon: FaGraduationCap, label: "Bridge Course & Entrance", x: "-5%", y: "-10%", xMobile: "-10%", yMobile: "-5%", color: "#F97316", complementaryColor: "#3B82F6" },
-    { Icon: FaCode, label: "Programming Language", x: "80%", y: "-5%", xMobile: "85%", yMobile: "-5%", color: "#FBBF24", complementaryColor: "#A855F7" },
-    { Icon: FaMobileAlt, label: "Mobile Repairing", x: "-10%", y: "80%", xMobile: "-15%", yMobile: "85%", color: "#3B82F6", complementaryColor: "#F97316" },
-    { Icon: FaLaptop, label: "Computer Class", x: "40%", y: "-15%", xMobile: "35%", yMobile: "-10%", color: "#47A248", complementaryColor: "#EF4444" },
-    { Icon: FaBook, label: "Coaching Class", x: "90%", y: "75%", xMobile: "90%", yMobile: "80%", color: "#F05138", complementaryColor: "#47A248" },
+    { Icon: FaGraduationCap, label: "Bridge Course & Entrance", x: "-5%", y: "-10%", xMobile: "-15%", yMobile: "-20%", color: "#F97316", complementaryColor: "#3B82F6" },
+    { Icon: FaCode, label: "Programming Language", x: "80%", y: "-5%", xMobile: "90%", yMobile: "-15%", color: "#FBBF24", complementaryColor: "#A855F7" },
+    { Icon: FaMobileAlt, label: "Mobile Repairing", x: "-10%", y: "80%", xMobile: "-20%", yMobile: "90%", color: "#3B82F6", complementaryColor: "#F97316" },
+    { Icon: FaLaptop, label: "Computer Class", x: "40%", y: "-15%", xMobile: "30%", yMobile: "-25%", color: "#47A248", complementaryColor: "#EF4444" },
+    { Icon: FaBook, label: "Coaching Class", x: "90%", y: "75%", xMobile: "100%", yMobile: "85%", color: "#F05138", complementaryColor: "#47A248" },
   ];
 
   return (
@@ -273,47 +273,13 @@ const HeroSection = () => {
 
       {/* Content */}
       <motion.div
-        className="relative w-[90%] mx-auto px-4 flex flex-col sm:flex-row items-center justify-between z-10 space-y-8 sm:space-y-0"
+        className="relative w-[90%] mx-auto px-4 flex flex-col-reverse sm:flex-row items-center justify-between z-10 space-y-8 sm:space-y-0"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
-        {/* Right Side: Image with Decorative Circles and Floating Service Icons (Top on Mobile) */}
-        <motion.div
-          className="w-full sm:w-[45%] flex justify-center relative mt-4 sm:mt-0 order-1 sm:order-2 min-h-[300px] sm:min-h-[400px]"
-          initial="hidden"
-          animate="visible"
-          whileHover="hover"
-          variants={imageVariants}
-        >
-          {/* Decorative Circles */}
-          {decorativeCircles}
-          {/* Main Image */}
-          <Image
-            src="/student.png"
-            alt="Two students wearing SAAN Coaching and Training Center t-shirts"
-            width={400}
-            height={400}
-            className="w-2/3 sm:w-full h-auto object-contain z-10"
-          />
-          {/* Floating Service Icons around the Image */}
-          {floatingServices.map((service, index) => (
-            <FloatingServiceIcon
-              key={index}
-              Icon={service.Icon}
-              label={service.label}
-              x={service.x}
-              y={service.y}
-              xMobile={service.xMobile}
-              yMobile={service.yMobile}
-              color={service.color}
-              complementaryColor={service.complementaryColor}
-            />
-          ))}
-        </motion.div>
-
-        {/* Left Side: Highlighted Services (Bottom on Mobile) */}
-        <div className="w-full sm:w-[55%] text-center sm:text-left space-y-6 min-h-[600px] flex flex-col justify-center order-2 sm:order-1">
+        {/* Left Side: Highlighted Services */}
+        <div className="w-full sm:w-[55%] text-center sm:text-left space-y-6 min-h-[600px] flex flex-col justify-center">
           <motion.div variants={childVariants} className="mb-4">
             <MotionBadge
               className="inline-block text-lg sm:text-2xl bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 font-bold px-6 py-3 rounded-full text-center whitespace-normal break-words"
@@ -365,6 +331,40 @@ const HeroSection = () => {
             </Button>
           </motion.div>
         </div>
+
+        {/* Right Side: Original Image with Decorative Circles and Enhanced Floating Service Icons */}
+        <motion.div
+          className="w-full sm:w-[45%] flex justify-center relative mt-4 sm:mt-0"
+          initial="hidden"
+          animate="visible"
+          whileHover="hover"
+          variants={imageVariants}
+        >
+          {/* Decorative Circles */}
+          {decorativeCircles}
+          {/* Main Image */}
+          <Image
+            src="/student.png"
+            alt="Two students wearing SAAN Coaching and Training Center t-shirts"
+            width={400}
+            height={400}
+            className="w-2/3 sm:w-full h-auto object-contain z-10"
+          />
+          {/* Floating Service Icons around the Image */}
+          {floatingServices.map((service, index) => (
+            <FloatingServiceIcon
+              key={index}
+              Icon={service.Icon}
+              label={service.label}
+              x={service.x}
+              y={service.y}
+              xMobile={service.xMobile}
+              yMobile={service.yMobile}
+              color={service.color}
+              complementaryColor={service.complementaryColor}
+            />
+          ))}
+        </motion.div>
       </motion.div>
 
       {/* Animated Graduation Cap Icon (from original code) */}
