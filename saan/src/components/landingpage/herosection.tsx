@@ -335,7 +335,7 @@ const HeroSection = () => {
 
         {/* Right Side: Original Image with Decorative Circles and Enhanced Floating Service Icons */}
         <motion.div
-          className="w-full sm:w-[45%] flex justify-center relative mt-4 sm:mt-0"
+          className="w-full sm:w-[45%] flex justify-center relative my-4 sm:my-0"
           initial="hidden"
           animate="visible"
           whileHover="hover"

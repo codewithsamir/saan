@@ -34,7 +34,7 @@ export default function Home() {
       {/* Example with Text Only */}
       {/* <PopupAdvertisement contentType="text" /> */}
       {/* Services Section */}
-     <Servicecardsection />
+     {/* <Servicecardsection /> */}
 
 
 {/* Dynamic Service Sections */}
