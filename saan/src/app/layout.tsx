@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   keywords: [
     "saan",
     "saan coaching center",
+    "saan computer center", // Added
+    "saan computer",       // Added
+    "saan mobile",         // Added
+    "saan programming",    // Added
     "janakpur coaching center",
     "janakpur computer center",
     "mobile repairing janakpur",
@@ -33,16 +37,16 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "SAAN Coaching and Training Center" }],
   verification: {
-    google: "0h6mLogELJG-SKu5XC5V5dTzYRqmcD02VKnpBTtHbz4", // Added Google Site Verification
+    google: "0h6mLogELJG-SKu5XC5V5dTzYRqmcD02VKnpBTtHbz4",
   },
   openGraph: {
     title: "SAAN Coaching and Training Center | Janakpur, Nepal",
-    description: "SAAN Coaching Center in Janakpur offers bridge courses, computer classes, mobile repairing, and more. Online classes coming soon for students in Nepal.",
+    description: "SAAN Coaching Center in Janakpur offers bridge courses, computer classes (saan computer center), mobile repairing (saan mobile), and programming (saan programming). Online classes coming soon for students in Nepal.",
     url: "https://saan-psi.vercel.app",
     siteName: "SAAN Coaching and Training Center",
     images: [
       {
-        url: "https://saan-psi.vercel.app/logo.png", // Replace with your actual image URL hosted on Vercel
+        url: "https://saan-psi.vercel.app/logo.png",
         width: 1200,
         height: 630,
         alt: "SAAN Coaching and Training Center in Janakpur, Nepal",
@@ -54,8 +58,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "SAAN Coaching and Training Center | Janakpur, Nepal",
-    description: "SAAN Coaching Center in Janakpur offers bridge courses, computer classes, mobile repairing, and more. Online classes coming soon for students in Nepal.",
-    images: ["https://saan-psi.vercel.app/twitter-image.jpg"], // Replace with your actual image URL hosted on Vercel
+    description: "SAAN Coaching Center in Janakpur offers bridge courses, computer classes (saan computer), mobile repairing (saan mobile), and programming (saan programming). Online classes coming soon for students in Nepal.",
+    images: ["https://saan-psi.vercel.app/twitter-image.jpg"],
   },
   robots: {
     index: true,
@@ -72,10 +76,10 @@ export const metadata: Metadata = {
     canonical: "https://saan-psi.vercel.app",
   },
   other: {
-    "geo.region": "NP", // Nepal
+    "geo.region": "NP",
     "geo.placename": "Janakpur",
-    "geo.position": "26.7288;85.9266", // Coordinates for Janakpur
-    "ICBM": "26.7288, 85.9266", // Intercontinental Ballistic Missile (used for geo-tagging)
+    "geo.position": "26.7288;85.9266",
+    "ICBM": "26.7288, 85.9266",
   },
 };
 
@@ -93,10 +97,10 @@ export default function RootLayout({
         {/* Google Site Verification */}
         <meta name="google-site-verification" content="0h6mLogELJG-SKu5XC5V5dTzYRqmcD02VKnpBTtHbz4" />
 
-        {/* Corrected Nepali Keywords for Local Search */}
+        {/* Updated Nepali Keywords for Local Search */}
         <meta
           name="keywords"
-          content="सान कोचिङ सेन्टर, जनकपुर कोचिङ सेन्टर, जनकपुर कम्प्युटर सेन्टर, मोबाइल मर्मत जनकपुर, अनलाइन कक्षा नेपाल"
+          content="सान कोचिङ सेन्टर, सान कम्प्युटर सेन्टर, सान कम्प्युटर, सान मोबाइल, सान प्रोग्रामिङ, जनकपुर कोचिङ सेन्टर, जनकपुर कम्प्युटर सेन्टर, मोबाइल मर्मत जनकपुर, अनलाइन कक्षा नेपाल"
         />
 
         {/* Local Business Structured Data (JSON-LD) */}
@@ -107,13 +111,13 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "EducationalOrganization",
               name: "SAAN Coaching and Training Center",
-              description: "SAAN Coaching Center in Janakpur offers quality education and training. Join us for bridge courses, computer classes, mobile repairing, and programming. Online classes coming soon for students across Nepal.",
+              description: "SAAN Coaching Center in Janakpur offers quality education and training. Join us for bridge courses, computer classes (saan computer center), mobile repairing (saan mobile), and programming (saan programming). Online classes coming soon for students across Nepal.",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Janakpurdham-9, Pidari Chowk, behind the Bus Park, opposite side of SBI Bank",
                 addressLocality: "Janakpur",
                 addressRegion: "Madhesh Province",
-                postalCode: "45600", // Approximate postal code for Janakpur
+                postalCode: "45600",
                 addressCountry: "NP",
               },
               geo: {
@@ -127,7 +131,7 @@ export default function RootLayout({
                 "https://www.facebook.com/p/SAAN-Coaching-Training-centre-61556791370942/",
                 "https://www.youtube.com/@saancoachingandtrainingcentre",
               ],
-              openingHours: "Mo-Sa 08:00-18:00", // Adjust based on actual hours
+              openingHours: "Mo-Sa 08:00-18:00",
               contactPoint: {
                 "@type": "ContactPoint",
                 telephone: "+977-9824864187",
@@ -150,21 +154,21 @@ export default function RootLayout({
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "Service",
-                      name: "Computer Classes (Basic-Advanced)",
+                      name: "Computer Classes (Basic-Advanced) - SAAN Computer Center",
                     },
                   },
                   {
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "Service",
-                      name: "Mobile Repairing",
+                      name: "Mobile Repairing - SAAN Mobile",
                     },
                   },
                   {
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "Service",
-                      name: "Programming Languages",
+                      name: "Programming Languages - SAAN Programming",
                     },
                   },
                   {
