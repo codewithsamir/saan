@@ -34,7 +34,6 @@ export default function Home() {
       {/* Example with Text Only */}
       {/* <PopupAdvertisement contentType="text" /> */}
       {/* Services Section */}
-     {/* <Servicecardsection /> */}
 
 
 {/* Dynamic Service Sections */}
@@ -53,6 +52,9 @@ export default function Home() {
           discount={service.discount}
         />
       ))}
+
+     <Servicecardsection />
+
 
 <GallerySection/>
 
