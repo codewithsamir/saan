@@ -610,6 +610,70 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
     schedule: "Sun-Fri, 3 hours/day (Morning or Evening batches)",
     discount: 50, // Added 25% discount
   },
+  {
+    "title": "Programming Languages",
+    "id": "programming",
+    "details": [
+      "Learn Core Programming Concepts in Python, Java, C++, and more",
+      "Master Object-Oriented Programming and Data Structures",
+      "Work on Real-World Projects Using Different Programming Languages",
+      "Get Job-Ready with Skills in High Demand Across Nepal and Globally",
+      "Develop Software Solutions Using Different Programming Paradigms",
+      "Build and Debug Code Effectively with Modern Development Tools",
+      "Join a Community of Learners and Collaborate on Projects",
+      "Individual programming courses are priced at NPR 5,000 each."
+    ],
+    "image": "/programminglanguages.jpg",
+    "alt": "programming languages",
+    "bgColor": "bg-green-50",
+    "textColor": "text-green-700",
+    "buttonColor": "bg-green-500 hover:bg-green-600",
+    "checkColor": "text-yellow-500",
+    "description": "Our Programming Languages course offers a deep dive into the essential languages like Python, Java, and C++, empowering you to write efficient and scalable code. From basic programming principles to advanced concepts like object-oriented programming and data structures, this course will make you proficient in various programming languages. Individual programming courses are priced at NPR 5,000 each, and we offer a 50% discount.",
+    "duration": "3 Months",
+    "targetAudience": [
+      "Beginners looking to start their coding journey",
+      "Intermediate programmers seeking to expand their knowledge",
+      "Professionals looking to switch to new programming languages"
+    ],
+    "prerequisites": [
+      "Basic understanding of computers and logic",
+      "Interest in learning programming languages"
+    ],
+    "curriculum": {
+      "basic": [
+        "Introduction to Programming Concepts",
+        "Data Types, Variables, and Operators",
+        "Control Structures (Loops, Conditionals)",
+        "Functions and Methods",
+        "Basic Algorithms and Problem Solving"
+      ],
+      "advanced": [
+        "Object-Oriented Programming (OOP) Principles",
+        "Data Structures (Arrays, Lists, Stacks, Queues, Trees)",
+        "Algorithms (Sorting, Searching, Recursion)",
+        "Error Handling and Debugging",
+        "Working with Libraries and Frameworks in Python, Java, and C++"
+      ],
+      "other": [
+        "Projects: Build a Calculator, Create a To-Do App, Solve Algorithm Challenges",
+        "Best Practices: Code Optimization, Documentation, and Version Control",
+        "Real-World Applications: Implementing Code in Real-Life Scenarios"
+      ]
+    },
+    "outcomes": [
+      "Gain proficiency in multiple programming languages",
+      "Solve complex coding challenges efficiently",
+      "Create projects that demonstrate your programming skills",
+      "Prepare for job roles like Software Developer, Application Developer, or Programmer",
+      "Develop a deep understanding of coding principles"
+    ],
+    "certification": "Certificate in Programming Languages",
+    "price": "5000", // Price in number
+    "discount": 50, // 50% discount
+    "schedule": "Sun-Fri, 2 hours/day (Morning or Evening batches)"
+  }
+  
 ];
 
 export { detailedServices };
