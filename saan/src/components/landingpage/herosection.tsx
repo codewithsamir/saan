@@ -63,13 +63,14 @@ const DecorativeCircle = ({ x, y, size, color }: { x: string; y: string; size: n
   );
 };
 
-// Floating Service Icon Component (Enhanced Interactivity with Responsive Positioning)
-const FloatingServiceIcon = ({ Icon, label, x, y, xMobile, yMobile, color, complementaryColor }: { Icon: React.ElementType; label: string; x: string; y: string; xMobile: string; yMobile: string; color: string; complementaryColor: string }) => {
+// Floating Service Icon Component (Enhanced Interactivity)
+const FloatingServiceIcon = ({ Icon, label, x, y, color, complementaryColor }: { Icon: React.ElementType; label: string; x: string; y: string; color: string; complementaryColor: string }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
-      className={`absolute flex flex-col items-center text-center z-20 cursor-pointer left-[${xMobile}] top-[${yMobile}] sm:left-[${x}] sm:top-[${y}]`}
+      className="absolute flex flex-col items-center text-center z-20 cursor-pointer"
+      style={{ left: x, top: y }}
       animate={{
         y: [0, 10, 0],
         rotate: [0, 6, 0],
@@ -209,9 +210,9 @@ const HeroSection = () => {
   // Expanded Services List
   const services = [
     { text: "Bridge Course & Entrance Preparation", icon: <FaGraduationCap />, color: "#F97316" },
-    { text: "Computer Classes for All Levels", icon: <FaLaptop />, color: "#47A248" },
-    { text: "Programming Language Courses", icon: <FaCode />, color: "#FBBF24" },
     { text: "Mobile Repairing Training", icon: <FaMobileAlt />, color: "#3B82F6" },
+    { text: "Programming Language Courses", icon: <FaCode />, color: "#FBBF24" },
+    { text: "Computer Classes for All Levels", icon: <FaLaptop />, color: "#47A248" },
     { text: "Coaching Classes for Success", icon: <FaBook />, color: "#F05138" },
     { text: "Expert Teachers", icon: <FaChalkboardTeacher />, color: "#F97316" },
     { text: "Proven Success Rate", icon: <FaTrophy />, color: "#3B82F6" },
@@ -236,17 +237,17 @@ const HeroSection = () => {
     <DecorativeCircle key={i} x={circle.x} y={circle.y} size={circle.size} color={circle.color} />
   ));
 
-  // Floating Service Icons around the Image (With Opposite Colors and Responsive Positions)
+  // Floating Service Icons around the Image (With Opposite Colors)
   const floatingServices = [
-    { Icon: FaGraduationCap, label: "Bridge Course & Entrance", x: "-5%", y: "-10%", xMobile: "-15%", yMobile: "-20%", color: "#F97316", complementaryColor: "#3B82F6" },
-    { Icon: FaCode, label: "Programming Language", x: "80%", y: "-5%", xMobile: "90%", yMobile: "-15%", color: "#FBBF24", complementaryColor: "#A855F7" },
-    { Icon: FaMobileAlt, label: "Mobile Repairing", x: "-10%", y: "80%", xMobile: "-20%", yMobile: "90%", color: "#3B82F6", complementaryColor: "#F97316" },
-    { Icon: FaLaptop, label: "Computer Class", x: "40%", y: "-15%", xMobile: "30%", yMobile: "-25%", color: "#47A248", complementaryColor: "#EF4444" },
-    { Icon: FaBook, label: "Coaching Class", x: "90%", y: "75%", xMobile: "100%", yMobile: "85%", color: "#F05138", complementaryColor: "#47A248" },
+    { Icon: FaGraduationCap, label: "Bridge Course & Entrance", x: "-5%", y: "-10%", color: "#F97316", complementaryColor: "#3B82F6" },
+    { Icon: FaMobileAlt, label: "Mobile Repairing", x: "80%", y: "-5%", color: "#3B82F6", complementaryColor: "#F97316" },
+    { Icon: FaCode, label: "Programming Language", x: "-10%", y: "80%", color: "#FBBF24", complementaryColor: "#A855F7" },
+    { Icon: FaLaptop, label: "Computer Class", x: "90%", y: "75%", color: "#47A248", complementaryColor: "#EF4444" },
+    { Icon: FaBook, label: "Coaching Class", x: "40%", y: "-15%", color: "#F05138", complementaryColor: "#47A248" },
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 text-white py-12 sm:py-16 min-h-[80vh] overflow-hidden">
+    <section className="relative bg-gradient-to-br from-gray-900 via-blue-950 to-indigo-950 text-white py-12 sm:py-16 min-h-[80vh] overflow-hidden">
       {/* Subtle Background Wave Shape */}
       <div className="absolute inset-0 z-0">
         <svg
@@ -358,8 +359,6 @@ const HeroSection = () => {
               label={service.label}
               x={service.x}
               y={service.y}
-              xMobile={service.xMobile}
-              yMobile={service.yMobile}
               color={service.color}
               complementaryColor={service.complementaryColor}
             />
