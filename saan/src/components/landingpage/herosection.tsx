@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { FaGraduationCap, FaWhatsapp, FaChalkboardTeacher, FaTrophy, FaMoneyBillWave } from "react-icons/fa";
+import { FaGraduationCap, FaWhatsapp, FaChalkboardTeacher, FaTrophy, FaMoneyBillWave, FaMobileAlt, FaCode, FaLaptop, FaBook } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
@@ -12,7 +12,7 @@ type BadgeProps = React.ComponentProps<typeof Badge>;
 // Create a motion-enabled version of the Badge component
 const MotionBadge = motion<BadgeProps>(Badge);
 
-// Floating Element for Background Animation
+// Floating Element for Background Animation (from original code)
 const FloatingElement = ({ x, y, size, type }: { x: string; y: string; size: number; type: "book" | "laptop" }) => {
   return (
     <motion.div
@@ -43,7 +43,7 @@ const FloatingElement = ({ x, y, size, type }: { x: string; y: string; size: num
   );
 };
 
-// Decorative Circle Element for Image
+// Decorative Circle Element for Image (from original code)
 const DecorativeCircle = ({ x, y, size, color }: { x: string; y: string; size: number; color: string }) => {
   return (
     <motion.div
@@ -61,6 +61,132 @@ const DecorativeCircle = ({ x, y, size, color }: { x: string; y: string; size: n
       }}
     />
   );
+};
+
+// Floating Service Icon Component (Enhanced Interactivity)
+const FloatingServiceIcon = ({ Icon, label, x, y, color, complementaryColor }: { Icon: React.ElementType; label: string; x: string; y: string; color: string; complementaryColor: string }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      className="absolute flex flex-col items-center text-center z-20 cursor-pointer"
+      style={{ left: x, top: y }}
+      animate={{
+        y: [0, 10, 0],
+        rotate: [0, 6, 0],
+        opacity: [0.8, 1, 0.8],
+        scale: isHovered ? 1.15 : [1, 1.05, 1],
+      }}
+      transition={{
+        duration: 4,
+        repeat: Infinity,
+        repeatType: "loop",
+        ease: "easeInOut",
+      }}
+      whileTap={{
+        scale: 0.95,
+        transition: { duration: 0.2 },
+      }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      onTap={() => {
+        // Optional: Add a pulse effect on click
+      }}
+    >
+      {/* Custom Curved Shape (Rounded Hexagon-like) with Glow and Rotation */}
+      <motion.svg
+        width="70"
+        height="70"
+        viewBox="0 0 70 70"
+        className={`absolute ${isHovered ? "drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]" : "drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]"}`}
+        animate={{ rotate: [0, 360] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+      >
+        <path
+          d="M35 10 Q45 10 55 20 Q65 30 55 40 Q45 50 35 50 Q25 50 15 40 Q5 30 15 20 Q25 10 35 10 Z"
+          fill="url(#gradient)"
+          stroke={complementaryColor}
+          strokeWidth="2"
+        />
+        <defs>
+          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style={{ stopColor: color, stopOpacity: 0.9 }} />
+            <stop offset="100%" style={{ stopColor: "#ffffff", stopOpacity: 0.6 }} />
+          </linearGradient>
+        </defs>
+      </motion.svg>
+      {/* Icon Inside the SVG Shape */}
+      <div className="relative flex items-center justify-center w-14 h-14">
+        <motion.div
+          animate={{
+            color: isHovered ? "#ffffff" : complementaryColor,
+            scale: isHovered ? 1.2 : 1,
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          <Icon className="text-3xl" />
+        </motion.div>
+      </div>
+      {/* Label with Improved Styling */}
+      <motion.span
+        className="text-xs font-medium text-white mt-3 px-2 py-1 bg-gray-900 bg-opacity-90 rounded-md shadow-lg"
+        animate={{
+          scale: isHovered ? 1.1 : 1,
+          backgroundColor: isHovered ? "rgba(17, 24, 39, 1)" : "rgba(17, 24, 39, 0.9)",
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        {label}
+      </motion.span>
+    </motion.div>
+  );
+};
+
+// Animation Variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.3 } },
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
+const badgeVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.8, type: "spring", bounce: 0.5 },
+  },
+  pulse: {
+    scale: [1, 1.1, 1],
+    transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
+  },
+};
+
+const badgeTextVariants = {
+  initial: { scale: 1, textShadow: "0 0 5px rgba(255, 255, 255, 0.5)" },
+  animate: {
+    scale: [1, 1.05, 1],
+    textShadow: [
+      "0 0 5px rgba(255, 255, 255, 0.5)",
+      "0 0 10px rgba(255, 255, 255, 0.8)",
+      "0 0 5px rgba(255, 255, 255, 0.5)",
+    ],
+    transition: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+  },
+};
+
+const imageVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 1 },
+  },
+  hover: { scale: 1.02, transition: { duration: 0.3 } },
 };
 
 const HeroSection = () => {
@@ -81,87 +207,19 @@ const HeroSection = () => {
     return () => clearInterval(typingInterval);
   }, []);
 
-  // Framer Motion animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.3 },
-    },
-  };
+  // Expanded Services List
+  const services = [
+    { text: "Bridge Course & Entrance Preparation", icon: <FaGraduationCap />, color: "#F97316" },
+    { text: "Computer Classes for All Levels", icon: <FaLaptop />, color: "#47A248" },
+    { text: "Programming Language Courses", icon: <FaCode />, color: "#FBBF24" },
+    { text: "Mobile Repairing Training", icon: <FaMobileAlt />, color: "#3B82F6" },
+    { text: "Coaching Classes for Success", icon: <FaBook />, color: "#F05138" },
+    { text: "Expert Teachers", icon: <FaChalkboardTeacher />, color: "#F97316" },
+    { text: "Proven Success Rate", icon: <FaTrophy />, color: "#3B82F6" },
+    { text: "Affordable Fees", icon: <FaMoneyBillWave />, color: "#FBBF24" },
+  ];
 
-  const childVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-  };
-
-  const badgeVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.8, type: "spring", bounce: 0.5 },
-    },
-    pulse: {
-      scale: [1, 1.1, 1],
-      transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
-    },
-  };
-
-  const badgeTextVariants = {
-    initial: { scale: 1, textShadow: "0 0 5px rgba(255, 255, 255, 0.5)" },
-    animate: {
-      scale: [1, 1.05, 1],
-      textShadow: [
-        "0 0 5px rgba(255, 255, 255, 0.5)",
-        "0 0 10px rgba(255, 255, 255, 0.8)",
-        "0 0 5px rgba(255, 255, 255, 0.5)",
-      ],
-      transition: { duration: 2, repeat: Infinity, ease: "easeInOut" },
-    },
-  };
-
-  const buttonVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.8, type: "spring", bounce: 0.5 },
-    },
-    hover: {
-      scale: 1.05,
-      transition: { duration: 0.3 },
-    },
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 1 },
-    },
-    hover: { scale: 1.02, transition: { duration: 0.3 } },
-  };
-
-  const headingVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.8, type: "spring", bounce: 0.5 },
-    },
-    hover: {
-      scale: 1.02,
-      transition: { duration: 0.3 },
-    },
-  };
-
-  // Generate floating elements (reduced for focus on content)
+  // Floating Elements (from original code)
   const floatingElements = [
     { x: "10%", y: "15%", size: 20, type: "book" },
     { x: "90%", y: "25%", size: 15, type: "laptop" },
@@ -169,7 +227,7 @@ const HeroSection = () => {
     <FloatingElement key={i} x={elem.x} y={elem.y} size={elem.size} type={elem.type as "book" | "laptop"} />
   ));
 
-  // Generate decorative circles around the image
+  // Decorative Circles around the Image (from original code)
   const decorativeCircles = [
     { x: "10%", y: "10%", size: 40, color: "#F97316" },
     { x: "80%", y: "20%", size: 30, color: "#3B82F6" },
@@ -179,15 +237,17 @@ const HeroSection = () => {
     <DecorativeCircle key={i} x={circle.x} y={circle.y} size={circle.size} color={circle.color} />
   ));
 
-  // Updated highlights with icons and simpler wording
-  const highlights = [
-    { text: "Great Teachers", color: "#F97316", icon: <FaChalkboardTeacher /> },
-    { text: "Students Succeed", color: "#3B82F6", icon: <FaTrophy /> },
-    { text: "Low Cost", color: "#FBBF24", icon: <FaMoneyBillWave /> },
+  // Floating Service Icons around the Image (With Opposite Colors)
+  const floatingServices = [
+    { Icon: FaGraduationCap, label: "Bridge Course & Entrance", x: "-5%", y: "-10%", color: "#F97316", complementaryColor: "#3B82F6" },
+    { Icon: FaCode, label: "Programming Language", x: "80%", y: "-5%", color: "#FBBF24", complementaryColor: "#A855F7" },
+    { Icon: FaMobileAlt, label: "Mobile Repairing", x: "-10%", y: "80%", color: "#3B82F6", complementaryColor: "#F97316" },
+    { Icon: FaLaptop, label: "Computer Class", x: "40%", y: "-15%", color: "#47A248", complementaryColor: "#EF4444" },
+    { Icon: FaBook, label: "Coaching Class", x: "90%", y: "75%", color: "#F05138", complementaryColor: "#47A248" },
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white py-6 sm:py-16 min-h-[70vh] sm:min-h-[92vh] overflow-hidden">
+    <section className="relative bg-gradient-to-br from-gray-900 via-blue-950 to-indigo-950 text-white py-12 sm:py-16 min-h-[80vh] overflow-hidden">
       {/* Subtle Background Wave Shape */}
       <div className="absolute inset-0 z-0">
         <svg
@@ -209,25 +269,21 @@ const HeroSection = () => {
         </svg>
       </div>
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900 opacity-40 z-0"></div>
-
-      {/* Floating Elements */}
+      {/* Floating Elements (Book and Laptop) */}
       {floatingElements}
 
       {/* Content */}
       <motion.div
-        className="relative w-full sm:w-[90%]  mx-auto px-3 sm:px-4 flex flex-col items-center justify-between z-10 space-y-4 sm:space-y-0 sm:flex-row"
+        className="relative w-[90%] mx-auto px-4 flex flex-col sm:flex-row items-center justify-between z-10 space-y-8 sm:space-y-0"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
-        {/* Left Side: Highlighted Content */}
-        <div className="w-full sm:w-[55%] text-center sm:text-left space-y-3 sm:space-y-4">
-          <motion.div variants={childVariants} className="mb-3 sm:mb-4">
+        {/* Left Side: Highlighted Services */}
+        <div className="w-full sm:w-[55%] text-center sm:text-left space-y-6 min-h-[600px] flex flex-col justify-center">
+          <motion.div variants={childVariants} className="mb-4">
             <MotionBadge
-             
-              className="inline-block text-lg sm:text-2xl md:text-3xl lg:text-4xl bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 font-bold px-3 py-2 sm:px-6 sm:py-3 rounded-full text-center whitespace-normal break-words "
+              className="inline-block text-lg sm:text-2xl bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 font-bold px-6 py-3 rounded-full text-center whitespace-normal break-words"
               variants={badgeVariants}
               initial="hidden"
               animate="visible"
@@ -244,65 +300,40 @@ const HeroSection = () => {
             </MotionBadge>
           </motion.div>
           <motion.h1
-            variants={headingVariants}
-            initial="hidden"
-            animate="visible"
-            whileHover="hover"
-            className="text-4xl md:text-5xl font-extrabold mb-1 sm:mb-2 leading-tight bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent "
+            variants={childVariants}
+            className="text-4xl md:text-5xl font-extrabold leading-tight bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent"
           >
-            SAAN Coaching and Training Center
+            Empower Your Future
           </motion.h1>
           <motion.p
             variants={childVariants}
-            className="text-lg font-light mb-2 sm:mb-4 text-gray-400"
-          >
-            Empowering Students for Success Since 2080
-          </motion.p>
-          <motion.p
-            variants={childVariants}
-            className=" text-lg md:text-xl font-medium mb-2 sm:mb-4 text-gray-300"
+            className="text-lg md:text-xl font-medium text-gray-300"
           >
             {typedText}
-            <span className="inline-block w-1 h-4 sm:h-6 bg-yellow-500 ml-1 animate-blink"></span>
+            <span className="inline-block w-1 h-6 bg-yellow-500 ml-1 animate-blink"></span>
           </motion.p>
-          {/* Updated Highlights with Icons */}
-          <motion.ul
-            variants={childVariants}
-            className="space-y-1 sm:space-y-2 mb-2 sm:mb-4"
-          >
-            {highlights.map((highlight, index) => (
-              <li key={index} className="flex items-center justify-center sm:justify-start gap-2">
-                <span className="text-base sm:text-lg" style={{ color: highlight.color }}>
-                  {highlight.icon}
-                </span>
-                <span className="text-sm sm:text-base md:text-lg text-gray-300">{highlight.text}</span>
+          <motion.ul variants={childVariants} className="space-y-3">
+            {services.map((service, index) => (
+              <li key={index} className="flex items-center justify-center sm:justify-start gap-3">
+                <span className="text-xl" style={{ color: service.color }}>{service.icon}</span>
+                <span className="text-base md:text-lg text-gray-300">{service.text}</span>
               </li>
             ))}
           </motion.ul>
-          {/* Testimonial */}
-          <motion.div
-            variants={childVariants}
-            className="mb-2 sm:mb-4 text-sm sm:text-base md:text-lg text-gray-300 italic"
-          >
-            "98% of our students improved their grades after joining SAAN!" - Happy Parent
-          </motion.div>
-          {/* Button */}
-          <motion.div variants={childVariants}>
-            <motion.div variants={buttonVariants} whileHover="hover">
-              <Button
-                size="sm"
-                className="bg-yellow-500 text-blue-900 hover:bg-yellow-600 font-semibold px-4 py-2 sm:px-6 sm:py-3 rounded-full flex items-center gap-1 sm:gap-2 text-sm sm:text-base md:text-lg mx-auto sm:mx-0"
-              >
-                <FaWhatsapp className="text-base sm:text-lg" />
-                <a href="https://wa.me/9824864187" target="_blank" rel="noopener noreferrer">
-                  Join Now via WhatsApp
-                </a>
-              </Button>
-            </motion.div>
+          <motion.div variants={childVariants} className="mt-6">
+            <Button
+              size="lg"
+              className="bg-yellow-500 text-blue-900 hover:bg-yellow-600 font-semibold px-6 py-3 rounded-full flex items-center gap-2 mx-auto sm:mx-0"
+            >
+              <FaWhatsapp className="text-lg" />
+              <a href="https://wa.me/9824864187" target="_blank" rel="noopener noreferrer">
+                Join Now via WhatsApp
+              </a>
+            </Button>
           </motion.div>
         </div>
 
-        {/* Right Side: Student Image with Decorative Circles */}
+        {/* Right Side: Original Image with Decorative Circles and Enhanced Floating Service Icons */}
         <motion.div
           className="w-full sm:w-[45%] flex justify-center relative mt-4 sm:mt-0"
           initial="hidden"
@@ -312,6 +343,7 @@ const HeroSection = () => {
         >
           {/* Decorative Circles */}
           {decorativeCircles}
+          {/* Main Image */}
           <Image
             src="/student.png"
             alt="Two students wearing SAAN Coaching and Training Center t-shirts"
@@ -319,14 +351,24 @@ const HeroSection = () => {
             height={400}
             className="w-2/3 sm:w-full h-auto object-contain z-10"
           />
-
-          
+          {/* Floating Service Icons around the Image */}
+          {floatingServices.map((service, index) => (
+            <FloatingServiceIcon
+              key={index}
+              Icon={service.Icon}
+              label={service.label}
+              x={service.x}
+              y={service.y}
+              color={service.color}
+              complementaryColor={service.complementaryColor}
+            />
+          ))}
         </motion.div>
       </motion.div>
 
-      {/* Animated Graduation Cap Icon */}
+      {/* Animated Graduation Cap Icon (from original code) */}
       <motion.div
-        className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 text-3xl sm:text-4xl md:text-6xl opacity-20 z-10"
+        className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 text-4xl md:text-6xl opacity-20 z-10"
         initial={{ opacity: 0, rotate: -10 }}
         animate={{
           opacity: 0.2,
