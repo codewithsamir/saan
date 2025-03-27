@@ -145,21 +145,29 @@ const FloatingServiceIcon = ({ Icon, label, x, y, color, complementaryColor }: {
 
 
 // Scroll Down Icon with Animation (Checkbox Style)
-const ScrollTrigger = () => {
+const ScrollTrigger = (className: any) => {
   const handleScroll = () => {
     window.scrollBy({ top: window.innerHeight / 2, behavior: "smooth" });
   };
 
   return (
     <div
-      className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white z-20 cursor-pointer flex items-center justify-center"
+      className={` ${className} absolute   bottom-0 left-1/2 transform -translate-x-1/2 text-white z-20 cursor-pointer flex items-center justify-center`}
       onClick={handleScroll}
     >
-      {/* Checkbox Style */}
+      {/* Scroll Button with Hover and Tap Animations */}
       <motion.div
         className="relative w-12 h-12 rounded-full bg-gray-800 border-4 border-yellow-500 flex items-center justify-center hover:bg-yellow-500 hover:border-yellow-600 transition-all duration-300"
         whileTap={{ scale: 0.9 }}
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.1, rotate: 15 }} // Adding rotation and scale on hover for more animation
+        animate={{ y: [0, -10, 0] }} // Adding bounce animation
+        transition={{
+          y: {
+            duration: 0.5,
+            repeat: Infinity,
+            repeatType: "reverse", // Reverse the animation
+          },
+        }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +184,16 @@ const ScrollTrigger = () => {
           <path d="M12 5v14M19 12l-7 7-7-7" />
         </svg>
       </motion.div>
-      <p className="text-xs text-center mt-2 text-gray-300">Click to Scroll</p>
+
+      {/* Scroll Text with fade-in animation */}
+      <motion.p
+        className="text-xs text-center mt-2 text-gray-300"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        Click to Scroll
+      </motion.p>
     </div>
   );
 };
@@ -240,7 +257,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-gray-900 via-blue-950 to-indigo-950 text-white sm:py-8 min-h-[80vh]  overflow-hidden">
+    <section className="relative bg-gradient-to-br from-gray-900 via-blue-950 to-indigo-950 text-white   sm:py-8 min-h-[80vh]  overflow-hidden">
       {/* Subtle Background Wave Shape */}
       <div className="absolute inset-0 z-0">
         <svg
@@ -272,7 +289,7 @@ const HeroSection = () => {
         animate="visible"
       >
         {/* Left Side: Highlighted Services */}
-        <div className="w-full sm:w-[55%] text-center sm:text-left space-y-6 min-h-[600px] flex flex-col justify-center">
+        <div className="w-full sm:w-[55%] text-center sm:text-left space-y-6 min-h-[600px] flex flex-col justify-center relative sm:static">
           {/* Offer Badge */}
           <motion.div className="mb-4">
             <MotionBadge
@@ -319,6 +336,8 @@ const HeroSection = () => {
               </a>
             </Button>
           </div>
+      <ScrollTrigger />
+
         </div>
 
         {/* Right Side: Original Image with Decorative Circles and Enhanced Floating Service Icons */}
@@ -370,7 +389,6 @@ const HeroSection = () => {
       >
         <FaGraduationCap />
       </motion.div>
-      <ScrollTrigger />
     </section>
   );
 };
