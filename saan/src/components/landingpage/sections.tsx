@@ -122,7 +122,7 @@ export default function ServiceSection({
   };
 
   return (
-    <section id={id} className={`py-20 px-4 ${bgColor} relative overflow-hidden`}>
+    <section id={id} className={`py-10 md:py-20 px-4 ${bgColor} relative overflow-hidden`}>
       {/* SVG Background */}
       <div className="absolute inset-0 z-0">
         <svg
@@ -148,18 +148,18 @@ export default function ServiceSection({
 
       {/* Content */}
       <motion.div
-        className="max-w-6xl mx-auto relative z-10 touch-action-auto"
+        className="max-w-6xl mx-auto relative z-10 touch-action-auto "
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={sectionVariants}
       >
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-10">{title}</h2>
-        <div className="relative flex flex-col md:flex-row items-center gap-8 bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg border-l-4 border-blue-500">
+        <h2 className=" text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">{title}</h2>
+        <div className="relative   flex flex-col md:flex-row items-center gap-8 bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg border-l-4 border-blue-500">
           {/* Conditionally render the discount badge */}
           {discount && (
             <motion.div
-              className="absolute top-[-10px] right-[200px]  transform z-50 translate-x-4 -translate-y-6 md:translate-x-2 md:-translate-y-4"
+              className="absolute  top-[-40px] right-[100px] md:top-[-10px] md:right-[200px]  transform z-50 translate-x-4 -translate-y-6 md:translate-x-2 md:-translate-y-4"
               initial="hidden"
               whileInView="visible"
               animate="animate"
@@ -170,7 +170,7 @@ export default function ServiceSection({
               <div className="relative">
                 {/* Curved Wave Shape using SVG */}
                 <svg
-                  className="w-36 h-36 md:w-48 md:h-40"
+                  className="w-32 h-32 md:w-48 md:h-40"
                   viewBox="0 0 180 150"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -221,7 +221,7 @@ export default function ServiceSection({
           {/* Conditionally render the rewards badge */}
           {rewards && rewards.length > 0 && (
             <motion.div
-              className="absolute top-[-10px]  right-0 transform z-50 -translate-x-4 -translate-y-6 md:-translate-x-2 md:-translate-y-4"
+              className="absolute top-[-40px] right-[-45px] md:top-[-10px]  md:right-0 transform z-50 -translate-x-4 -translate-y-6 md:-translate-x-2 md:-translate-y-4"
               initial="hidden"
               whileInView="visible"
               animate="animate"
@@ -232,7 +232,7 @@ export default function ServiceSection({
               <div className="relative">
                 {/* Curved Wave Shape using SVG */}
                 <svg
-                  className="w-36 h-36 md:w-48 md:h-40"
+                  className="w-32 h-32 md:w-48 md:h-40"
                   viewBox="0 0 180 150"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -281,7 +281,7 @@ export default function ServiceSection({
           )}
 
           {/* Left Column: Details */}
-          <div className="md:w-1/2">
+          <div className=" md:w-1/2 pt-4 sm:pt-0">
             <h3 className={`text-2xl font-semibold ${textColor} mb-4`}>What You'll Learn:</h3>
             <ul className="space-y-2">
               {details.map((detail, index) => (

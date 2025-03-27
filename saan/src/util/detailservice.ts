@@ -648,6 +648,76 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
       { item: "Headphones", image: "/headphones.jpg" },
     ], // Rewards for Full Stack Web Development
   },
+  {
+    "title": "English Language Mastery",
+    "id": "english-class",
+    "details": [
+      "Improve speaking, listening, reading, and writing skills in English",
+      "Learn grammar, vocabulary, and sentence structure",
+      "Enhance communication skills for professional and personal growth",
+      "Build confidence in speaking English in various settings",
+      "Prepare for international English proficiency exams (IELTS, TOEFL, etc.)",
+      "Learn through interactive lessons, quizzes, and real-life scenarios",
+      "Develop English language skills to excel in global job markets"
+    ],
+    "image": "/englishclass.jpg",
+    "alt": "english language class",
+    "bgColor": "bg-green-50",
+    "textColor": "text-green-700",
+    "buttonColor": "bg-green-500 hover:bg-green-600",
+    "checkColor": "text-yellow-500",
+    "description": "Our English Language Mastery course helps students of all levels enhance their speaking, writing, reading, and listening skills. With a focus on grammar, vocabulary, and communication, you'll gain confidence and fluency to use English effectively in any context, from professional meetings to casual conversations.",
+    "duration": "3 Months",
+    "targetAudience": [
+      "Beginners who want to start learning English",
+      "Intermediate learners aiming to improve their fluency",
+      "Professionals seeking to enhance their English for career advancement",
+      "Students preparing for English proficiency exams like IELTS, TOEFL"
+    ],
+    "prerequisites": [
+      "None (Open to beginners and intermediate learners)"
+    ],
+    "curriculum": {
+      "basic": [
+        "Grammar: Sentence Structure, Tenses, Parts of Speech, Prepositions",
+        "Vocabulary: Common Words, Phrasal Verbs, Idioms, and Collocations",
+        "Pronunciation: Vowel Sounds, Consonant Sounds, Stress, and Intonation",
+        "Reading Comprehension: Skimming, Scanning, Understanding Context",
+        "Writing: Paragraphs, Essays, Business Writing, Emails",
+        "Listening: Understanding Accents, Audio Clips, Note-taking"
+      ],
+      "advanced": [
+        "Advanced Grammar: Conditionals, Modals, Reported Speech, Passive Voice",
+        "Fluency Practice: Conversations, Debates, Presentations",
+        "Listening: Advanced Listening Skills, TED Talks, News, Movies",
+        "Writing: Formal Writing, Creative Writing, Summaries, Reports",
+        "Speaking: Public Speaking, Interviews, Negotiations, Business English",
+        "Exam Preparation: IELTS, TOEFL, and other proficiency tests"
+      ],
+      "other": [
+        "Culture & Communication: English in different countries, cross-cultural communication",
+        "Study Materials: Access to exclusive learning resources, quizzes, and exercises",
+        "Practical Skills: Job interviews, networking, and professional communication"
+      ]
+    },
+    "outcomes": [
+      "Speak English fluently and confidently in any situation",
+      "Write professional emails, reports, and essays with ease",
+      "Pass English proficiency exams like IELTS or TOEFL with high scores",
+      "Understand English media (movies, TV shows, podcasts, etc.)",
+      "Build a strong vocabulary for both formal and informal settings",
+      "Improve listening skills for better understanding of native speakers"
+    ],
+    certification: "Certificate in English Language Mastery",
+    price: "NPR 5,000",
+    schedule: "Mon-Sat, 2 hours/day (Morning or Evening batches)",
+    discount: 50, // Added 30% discount
+    rewards: [
+      { item: "Notebook", image: "/notebook.jpg" },
+      { item: "Pen", image: "/pen.jpg" },
+    ], 
+  }
+  
 ];
 
 export { detailedServices };

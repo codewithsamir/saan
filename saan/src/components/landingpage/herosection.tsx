@@ -240,7 +240,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-gray-900 via-blue-950 to-indigo-950 text-white sm:py-12 min-h-[80vh]  overflow-hidden">
+    <section className="relative bg-gradient-to-br from-gray-900 via-blue-950 to-indigo-950 text-white sm:py-8 min-h-[80vh]  overflow-hidden">
       {/* Subtle Background Wave Shape */}
       <div className="absolute inset-0 z-0">
         <svg
