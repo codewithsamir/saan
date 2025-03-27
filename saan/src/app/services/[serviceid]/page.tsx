@@ -4,6 +4,7 @@ import Link from "next/link";
 import { DetailedService, ProgrammingLanguagesService, SubCourse, Service } from "@/types";
 import ServiceDetailsClient from "@/components/landingpage/servicedetailcom"; // Import client-side component
 import { detailedServices } from "@/util/detailservice";
+import ContactSection from "@/components/landingpage/contactus";
 
 
 
@@ -251,6 +252,8 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
             </div>
           )}
         </div>
+
+        <ContactSection />
       </section>
     </>
   );
