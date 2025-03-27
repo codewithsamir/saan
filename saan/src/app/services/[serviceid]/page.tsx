@@ -222,7 +222,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
 
                     {/* Certificate Section */}
                     {service.certification && (
-            <div className="mt-8 p-6 rounded-lg shadow-md bg-white">
+            <div className="my-8 p-6 rounded-lg shadow-md bg-white">
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">Certification</h2>
               <div className="space-y-4">
                 <p className="text-gray-700">

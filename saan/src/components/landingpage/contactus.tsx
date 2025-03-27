@@ -111,15 +111,15 @@ const ContactSection = () => {
       textColor: "text-white",
       tooltip: "Watch our videos on YouTube!",
     },
-    {
-      name: "Email",
-      icon: <FaEnvelope className="text-lg sm:text-xl" />,
-      href: "mailto:info@saancoaching.com",
-      bgColor: "bg-gray-600",
-      hoverColor: "hover:bg-gray-700",
-      textColor: "text-white",
-      tooltip: "Send us an email!",
-    },
+    // {
+    //   name: "Email",
+    //   icon: <FaEnvelope className="text-lg sm:text-xl" />,
+    //   href: "mailto:info@saancoaching.com",
+    //   bgColor: "bg-gray-600",
+    //   hoverColor: "hover:bg-gray-700",
+    //   textColor: "text-white",
+    //   tooltip: "Send us an email!",
+    // },
   ];
 
   // Floating elements

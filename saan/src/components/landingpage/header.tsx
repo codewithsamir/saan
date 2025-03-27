@@ -33,7 +33,7 @@ export default function Header() {
                   Courses
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="bg-white text-gray-800 shadow-lg rounded-md">
-                  <ul className="grid w-[225px] sm:w-[235px] md:w-[300px]  p-2">
+                  <ul className="grid w-[230px]   md:w-[300px]  p-2">
                     {services.map((service:any) => (
                       <ListItem key={service.id} title={service.title} href={`/services/${service.id}`}>
                         {/* {service.id} */}
