@@ -170,7 +170,7 @@ export default function ServiceSection({
               <div className="relative">
                 {/* Curved Wave Shape using SVG */}
                 <svg
-                  className="w-44 h-36 md:w-48 md:h-40"
+                  className="w-36 h-36 md:w-48 md:h-40"
                   viewBox="0 0 180 150"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -191,8 +191,8 @@ export default function ServiceSection({
 
                 {/* Discount Text */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white font-bold">
-                  <span className="text-3xl md:text-4xl">{discount}%</span>
-                  <span className="text-base md:text-lg">DISCOUNT</span>
+                  <span className="text-xl md:text-4xl">{discount}%</span>
+                  <span className="text-sm md:text-lg">DISCOUNT</span>
                 </div>
 
                 {/* Decorative Elements */}
@@ -232,7 +232,7 @@ export default function ServiceSection({
               <div className="relative">
                 {/* Curved Wave Shape using SVG */}
                 <svg
-                  className="w-44 h-36 md:w-48 md:h-40"
+                  className="w-36 h-36 md:w-48 md:h-40"
                   viewBox="0 0 180 150"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -254,7 +254,7 @@ export default function ServiceSection({
                 {/* Rewards Text */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white font-bold">
                   <span className="text-3xl md:text-4xl">🎁</span> {/* Emoji for gifts */}
-                  <span className="text-base md:text-lg">REWARDS</span>
+                  <span className=" text-sm md:text-lg">REWARDS</span>
                 </div>
 
                 {/* Decorative Elements */}

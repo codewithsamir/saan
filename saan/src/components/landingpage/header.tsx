@@ -15,11 +15,11 @@ import {
 
 export default function Header() {
   return (
-    <header className="bg-gradient-to-r from-slate-600 to-blue-800 text-white py-4 sticky top-0 left-0 z-50 shadow-md">
+    <header className="bg-gradient-to-r from-slate-600 to-blue-800 text-white py-2 sm:py-4 sticky top-0 left-0 z-50 shadow-md">
       <div className="w-full relative sm:w-[85%] mx-auto flex justify-between items-center flex-col sm:flex-row gap-4 sm:gap-0 px-4">
         {/* Logo/Name */}
         <Link href="/">
-          <h1 className="text-2xl font-bold">SAAN Coaching & Training Center</h1>
+          <h1 className="text-2xl font-bold">SAAN Coaching<span className="hidden sm:inline"> & Training Center</span></h1>
         </Link>
 
         <div className="flex items-center gap-5">
@@ -31,7 +31,7 @@ export default function Header() {
                   Services
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="bg-white text-gray-800 shadow-lg rounded-md">
-                  <ul className="grid w-[300px]  p-2">
+                  <ul className="grid w-[225px] sm:w-[300px]  p-2">
                     {services.map((service:any) => (
                       <ListItem key={service.id} title={service.title} href={`/services/${service.id}`}>
                         {/* {service.id} */}

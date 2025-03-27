@@ -231,16 +231,16 @@ const HeroSection = () => {
 
   // Floating Service Icons around the Image
   const floatingServices = [
-    { Icon: FaGraduationCap, label: "Bridge Course & Entrance", x: "-5%", y: "-10%", color: "#F97316", complementaryColor: "#3B82F6" },
-    { Icon: FaMobileAlt, label: "Mobile Repairing", x: "80%", y: "-5%", color: "#3B82F6", complementaryColor: "#F97316" },
-    { Icon: FaCode, label: "Programming Language", x: "-10%", y: "80%", color: "#FBBF24", complementaryColor: "#A855F7" },
-    { Icon: FaLaptop, label: "Computer Class", x: "90%", y: "75%", color: "#47A248", complementaryColor: "#EF4444" },
-    { Icon: FaBook, label: "Coaching Class", x: "40%", y: "-15%", color: "#F05138", complementaryColor: "#47A248" },
-    { Icon: FaBook, label: "Englsih Class", x: "-10%", y: "40%", color: "#47A248", complementaryColor: "#47A248" },
+    { Icon: FaGraduationCap, label: "Bridge Course & Entrance", x: "5%", y: "10%", color: "#F97316", complementaryColor: "#3B82F6" },
+    { Icon: FaMobileAlt, label: "Mobile Repairing", x: "65%", y: "5%", color: "#3B82F6", complementaryColor: "#F97316" },
+    { Icon: FaCode, label: "Programming Language", x: "0%", y: "70%", color: "#FBBF24", complementaryColor: "#A855F7" },
+    { Icon: FaLaptop, label: "Computer Class", x: "70%", y: "70%", color: "#47A248", complementaryColor: "#EF4444" },
+    { Icon: FaBook, label: "Coaching Class", x: "40%", y: "-12%", color: "#F05138", complementaryColor: "#47A248" },
+    { Icon: FaBook, label: "Englsih Class", x: "0%", y: "40%", color: "#47A248", complementaryColor: "#47A248" },
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-gray-900 via-blue-950 to-indigo-950 text-white py-12 sm:py-16 min-h-[80vh]  overflow-hidden">
+    <section className="relative bg-gradient-to-br from-gray-900 via-blue-950 to-indigo-950 text-white sm:py-12 min-h-[80vh]  overflow-hidden">
       {/* Subtle Background Wave Shape */}
       <div className="absolute inset-0 z-0">
         <svg
@@ -267,7 +267,7 @@ const HeroSection = () => {
 
       {/* Content */}
       <motion.div
-        className="relative w-full md:w-[80%] mx-auto px-4 flex flex-col-reverse sm:flex-row items-center justify-between z-10 space-y-8 sm:space-y-0"
+        className="relative w-full md:w-[80%] mx-auto px-4 flex flex-col sm:flex-row items-center justify-between z-10 space-y-8 sm:space-y-0"
         initial="hidden"
         animate="visible"
       >
@@ -323,7 +323,7 @@ const HeroSection = () => {
 
         {/* Right Side: Original Image with Decorative Circles and Enhanced Floating Service Icons */}
         <motion.div
-          className="w-full sm:w-[45%] flex justify-center relative my-4 sm:my-0"
+          className="w-full sm:w-[45%] flex justify-center relative mt-4"
           initial="hidden"
           animate="visible"
           whileHover="hover"
@@ -341,7 +341,7 @@ const HeroSection = () => {
             alt="Two students wearing SAAN Coaching and Training Center t-shirts"
             width={400}
             height={400}
-            className="w-2/3 sm:w-full h-auto object-contain z-10"
+            className="w-[450px]  h-[400px] object-contain z-10"
           />
           {/* Floating Service Icons around the Image */}
           {floatingServices.map((service, index) => (
