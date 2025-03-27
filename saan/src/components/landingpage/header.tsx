@@ -1,67 +1,83 @@
+"use client";
+
+import * as React from "react";
+import Link, { LinkProps } from "next/link";
 import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { Menu } from "lucide-react"; // For the hamburger menu icon
-import Link from "next/link";
+import { services } from "@/util/service";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 
 export default function Header() {
   return (
-    <header className="bg-blue-600 text-white py-4 sticky top-0 left-0 z-50 shadow-md">
-      <div className="w-full sm:w-[90%] mx-auto flex justify-between items-center px-4">
+    <header className="bg-gradient-to-r from-slate-600 to-blue-800 text-white py-4 sticky top-0 left-0 z-50 shadow-md">
+      <div className="w-full relative sm:w-[85%] mx-auto flex justify-between items-center flex-col sm:flex-row gap-4 sm:gap-0 px-4">
         {/* Logo/Name */}
-       <Link href="/">
-       <h1 className="text-2xl font-bold">SAAN Coaching</h1>
-       </Link>
+        <Link href="/">
+          <h1 className="text-2xl font-bold">SAAN Coaching & Training Center</h1>
+        </Link>
 
-        {/* Navigation for Desktop */}
-        <nav className="hidden md:flex space-x-4 md:items-center">
-          <a href="#bridge-course" className="hover:text-yellow-300 transition-colors">Bridge Course</a>
-          <a href="#computer-training" className="hover:text-yellow-300 transition-colors">Computer Training</a>
-          <a href="#coaching" className="hover:text-yellow-300 transition-colors">Coaching 6-10</a>
-          <a href="#mobile-repairing" className="hover:text-yellow-300 transition-colors">Mobile Repairing</a>
-          <a href="#programming" className="hover:text-yellow-300 transition-colors">Programming</a>
-          <a href="#web-development" className="hover:text-yellow-300 transition-colors">Web Development</a>
-          <Button asChild variant="outline" className="text-blue-900 bg-yellow-500 hover:bg-yellow-600">
-          <a href="#contactus" >
-              Contact us
-            </a>
+        <div className="flex items-center gap-5">
+          {/* Services Dropdown */}
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-orange-500 hover:to-yellow-600">
+                  Services
+                </NavigationMenuTrigger>
+                <NavigationMenuContent className="bg-white text-gray-800 shadow-lg rounded-md">
+                  <ul className="grid w-[300px]  p-2">
+                    {services.map((service:any) => (
+                      <ListItem key={service.id} title={service.title} href={`/services/${service.id}`}>
+                        {/* {service.id} */}
+                      </ListItem>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+
+          {/* Contact Us */}
+          <Button asChild className="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-orange-600 hover:to-yellow-500">
+            <Link href="#contactus">Contact Us</Link>
           </Button>
-        </nav>
-
-        {/* Navigation for Mobile */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild className="md:hidden">
-            <Button variant="outline" size="icon" className="text-white border-white">
-              <Menu className="h-6 w-6 text-black" />
-
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56">
-            <DropdownMenuItem>
-              <a href="#bridge-course" className="w-full">Bridge Course</a>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <a href="#computer-training" className="w-full">Computer Training</a>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <a href="#coaching" className="w-full">Coaching 5-10</a>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <a href="#mobile-repairing" className="w-full">Mobile Repairing</a>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <a href="#programming" className="w-full">Programming</a>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <a href="#web-development" className="w-full">Web Development</a>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-            <a href="#contactus" >
-              Contact us
-            </a>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        </div>
       </div>
     </header>
   );
 }
+
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a"> & LinkProps
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        {/* Wrap the Link component with proper ref forwarding */}
+        <Link {...props} legacyBehavior passHref>
+          <a
+            ref={ref}
+            className={
+              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-yellow-500 hover:text-white " +
+              className
+            }
+          >
+            <div className="text-sm font-medium leading-none">{title}</div>
+            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+              {children}
+            </p>
+          </a>
+        </Link>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+
+ListItem.displayName = "ListItem";

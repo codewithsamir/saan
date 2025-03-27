@@ -16,6 +16,7 @@ interface ServiceSectionProps {
   buttonColor: string;
   checkColor: string;
   discount?: number;
+  rewards?: { item: string; image: string }[]; // Add rewards property
 }
 
 export default function ServiceSection({
@@ -29,6 +30,7 @@ export default function ServiceSection({
   buttonColor,
   checkColor,
   discount,
+  rewards, // Include rewards in props
 }: ServiceSectionProps) {
   // Framer Motion animation variants for the section
   const sectionVariants = {
@@ -157,7 +159,7 @@ export default function ServiceSection({
           {/* Conditionally render the discount badge */}
           {discount && (
             <motion.div
-              className="absolute top-0 right-0 transform z-50 translate-x-4 -translate-y-6 md:translate-x-2 md:-translate-y-4"
+              className="absolute top-[-10px] right-[200px]  transform z-50 translate-x-4 -translate-y-6 md:translate-x-2 md:-translate-y-4"
               initial="hidden"
               whileInView="visible"
               animate="animate"
@@ -216,6 +218,69 @@ export default function ServiceSection({
             </motion.div>
           )}
 
+          {/* Conditionally render the rewards badge */}
+          {rewards && rewards.length > 0 && (
+            <motion.div
+              className="absolute top-[-10px]  right-0 transform z-50 -translate-x-4 -translate-y-6 md:-translate-x-2 md:-translate-y-4"
+              initial="hidden"
+              whileInView="visible"
+              animate="animate"
+              whileHover="hover"
+              viewport={{ once: true }}
+              variants={discountVariants} // Reuse discount animation for rewards badge
+            >
+              <div className="relative">
+                {/* Curved Wave Shape using SVG */}
+                <svg
+                  className="w-44 h-36 md:w-48 md:h-40"
+                  viewBox="0 0 180 150"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M20 30C40 10, 80 20, 100 40C120 60, 140 40, 160 30C160 90, 140 120, 100 130C60 140, 40 120, 20 90C0 60, 0 40, 20 30Z"
+                    fill="url(#rewardGradient)"
+                    stroke="white"
+                    strokeWidth="2"
+                  />
+                  <defs>
+                    <linearGradient id="rewardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{ stopColor: "#34D399", stopOpacity: 1 }} /> {/* Green */}
+                      <stop offset="100%" style={{ stopColor: "#10B981", stopOpacity: 1 }} /> {/* Dark Green */}
+                    </linearGradient>
+                  </defs>
+                </svg>
+
+                {/* Rewards Text */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white font-bold">
+                  <span className="text-3xl md:text-4xl">🎁</span> {/* Emoji for gifts */}
+                  <span className="text-base md:text-lg">REWARDS</span>
+                </div>
+
+                {/* Decorative Elements */}
+                <motion.div
+                  className="absolute top-0 left-0 w-4 h-4 bg-green-300 rounded-full opacity-50"
+                  variants={decorVariants}
+                  initial="hidden"
+                  animate="visible"
+                />
+                <motion.div
+                  className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full opacity-50"
+                  variants={decorVariants}
+                  initial="hidden"
+                  animate="visible"
+                />
+                <motion.div
+                  className="absolute top-4 right-2 w-2 h-2 bg-green-200 rounded-full opacity-50"
+                  variants={decorVariants}
+                  initial="hidden"
+                  animate="visible"
+                />
+              </div>
+            </motion.div>
+          )}
+
+          {/* Left Column: Details */}
           <div className="md:w-1/2">
             <h3 className={`text-2xl font-semibold ${textColor} mb-4`}>What You'll Learn:</h3>
             <ul className="space-y-2">
@@ -234,13 +299,15 @@ export default function ServiceSection({
                 </motion.li>
               ))}
             </ul>
+
+            {/* Buttons */}
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               whileHover="hover"
               variants={buttonVariants}
-              className="mt-2"
+              className="mt-6"
             >
               <Button asChild>
                 <Link href={`/services/${id}`}>Explore more</Link>
@@ -262,6 +329,8 @@ export default function ServiceSection({
               </motion.div>
             )}
           </div>
+
+          {/* Right Column: Image */}
           <motion.div
             className="md:w-1/2"
             initial="hidden"

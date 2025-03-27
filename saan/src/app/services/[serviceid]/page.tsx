@@ -1,15 +1,17 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { detailedServices } from "@/util/detailservice";
-import Head from "next/head";
 import Link from "next/link";
 import { DetailedService, ProgrammingLanguagesService, SubCourse, Service } from "@/types";
+import ServiceDetailsClient from "@/components/landingpage/servicedetailcom"; // Import client-side component
+import { detailedServices } from "@/util/detailservice";
+
 
 
 // Define the props interface for the page
 interface ServiceDetailPageProps {
   params: Promise<{ serviceid: string }>; // Use Promise for params to allow await
 }
+
 
 // Helper function to check if the service is a SubCourse
 const isSubCourse = (service: DetailedService | SubCourse): service is SubCourse => {
@@ -34,42 +36,43 @@ const CheckCircleSVG = ({ className }: { className: string }) => (
   </svg>
 );
 
+// SVG Reward Icon
+const RewardIcon = ({ item }: { item: string }) => (
+  <div className="flex items-center gap-2">
+    <svg
+      className="w-6 h-6 text-yellow-500"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 2l7.5 6.5H21l-6 7.5L12 22l-6-7.5L3 14.5h3.5L12 2z" />
+    </svg>
+    <span>{item}</span>
+  </div>
+);
+
 // Function to calculate discounted price
 const calculateDiscountedPrice = (price: string, discount: number): string => {
-  // Extract the numeric price (handle cases like "NPR 7,000 (3 Months) / NPR 14,000 (6 Months)")
-  const priceParts = price.split("/");
-  const firstPrice = priceParts[0].replace(/[^0-9]/g, ""); // Extract first price (e.g., "7000")
-  const originalPrice = parseFloat(firstPrice);
-
-  if (isNaN(originalPrice)) return price; // Return original price if parsing fails
-
-  const discountedPrice = originalPrice - (originalPrice * (discount / 100));
-  const formattedDiscountedPrice = `NPR ${Math.round(discountedPrice).toLocaleString()}`;
-
-  // If there's a second price (e.g., for 6 months), calculate its discount too
-  if (priceParts.length > 1) {
-    const secondPrice = priceParts[1].replace(/[^0-9]/g, ""); // Extract second price (e.g., "14000")
-    const originalSecondPrice = parseFloat(secondPrice);
-    const discountedSecondPrice = originalSecondPrice - (originalSecondPrice * (discount / 100));
-    return `${formattedDiscountedPrice} (3 Months) / NPR ${Math.round(discountedSecondPrice).toLocaleString()} (6 Months)`;
-  }
-
-  return formattedDiscountedPrice;
+  const numericPrice = parseFloat(price.replace(/[^0-9.-]+/g, ""));
+  const discountedPrice = numericPrice - numericPrice * (discount / 100);
+  return `NPR ${discountedPrice.toFixed(2)}`;
 };
 
 export default async function ServiceDetailPage({ params }: ServiceDetailPageProps) {
-  // Await the params to get the serviceid
-  const { serviceid } = await params;
+  const { serviceid } = await  params;
 
   // Find the service or sub-course by serviceid
   let service: DetailedService | SubCourse | undefined;
-
-  // First, check if the serviceid matches a top-level service
   service = detailedServices.find((s) => s.id === serviceid) as DetailedService | undefined;
 
   // If not found, check if the serviceid matches a sub-course within "Programming Languages"
   if (!service) {
-    const programmingService = detailedServices.find((s) => s.id === "programming") as ProgrammingLanguagesService | undefined;
+    const programmingService = detailedServices.find(
+      (s) => s.id === "programming" && "subCourses" in s
+    ) as ProgrammingLanguagesService | undefined;
     if (programmingService) {
       service = programmingService.subCourses.find((subCourse) => subCourse.id === serviceid);
     }
@@ -80,59 +83,24 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
   }
 
   // Extract styling from the top-level service (for sub-courses, use the parent styling)
-  const parentService = detailedServices.find((s) => s.id === "programming" && "subCourses" in s) as ProgrammingLanguagesService | undefined;
-  // Ensure styling is always a Service by providing a default details array for ProgrammingLanguagesService
-  const styling: Service = isSubCourse(service) && parentService 
+  const parentService = detailedServices.find((s) => s.id === "programming" && "subCourses" in s) as
+    | ProgrammingLanguagesService
+    | undefined;
+  const styling: Service = isSubCourse(service) && parentService
     ? { ...parentService, details: [] } // Add default details to satisfy Service interface
-    : service as DetailedService;
-
-
+    : (service as DetailedService);
 
   return (
     <>
-      <Head>
-        <title>{`${service.title} - SAAN Coaching and Training Center`}</title>
-        <meta name="description" content={service.description} />
-      </Head>
       <section className="py-12 px-4 bg-gray-100 min-h-screen">
         <Link href="/" className="p-2 text-white rounded-lg bg-red-500 hover:underline">
           {"< Back"}
         </Link>
-
         <div className="max-w-4xl mx-auto">
           {/* Header Section with Discount Badge */}
           <div className={`p-6 rounded-lg shadow-md ${styling.bgColor} relative`}>
-            {/* Conditionally render the discount badge */}
-            {service.discount && (
-           <div className="absolute top-[-60px] right-0 transform  translate-x-4 -translate-y-6 md:translate-x-2 md:-translate-y-4">
-           <div className="relative">
-             <svg
-               className="w-44 h-36 md:w-48 md:h-40"
-               viewBox="0 0 180 150"
-               fill="none"
-               xmlns="http://www.w3.org/2000/svg"
-             >
-               <path
-                 d="M20 30C40 10, 80 20, 100 40C120 60, 140 40, 160 30C160 90, 140 120, 100 130C60 140, 40 120, 20 90C0 60, 0 40, 20 30Z"
-                 fill="url(#yellowOrangeGradient)"
-                 stroke="white"
-                 strokeWidth="2"
-               />
-               <defs>
-                 <linearGradient id="yellowOrangeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                   <stop offset="0%" style={{ stopColor: "#FFD700", stopOpacity: 1 }} />
-                   <stop offset="100%" style={{ stopColor: "#FF4500", stopOpacity: 1 }} />
-                 </linearGradient>
-               </defs>
-             </svg>
-             <div className="absolute inset-0 flex flex-col items-center justify-center text-white font-bold">
-               <span className="text-3xl md:text-4xl">{service.discount}%</span>
-               <span className="text-base md:text-lg">DISCOUNT</span>
-             </div>
-           </div>
-         </div>
-         
-            )}
+            {/* Pass discount and rewards to the client component */}
+            <ServiceDetailsClient service={service}  />
 
             <h1 className={`text-3xl font-bold ${styling.textColor} mb-4`}>{service.title}</h1>
             <div className="flex flex-col md:flex-row gap-6">
@@ -159,6 +127,9 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
                   ) : (
                     service.price
                   )}
+                  {service.id === "computer-training" && (
+                    <span className="ml-2 text-gray-600">(Optional 6-Month: NPR 14,000)</span>
+                  )}
                 </p>
                 <p className="text-gray-800 font-semibold mb-4">Schedule: {service.schedule}</p>
                 <button
@@ -170,11 +141,23 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
             </div>
           </div>
 
-          {/* Details Section */}
+          {/* Rewards Section */}
+          {service.rewards && (
+            <div className="mt-8 p-6 rounded-lg shadow-md bg-white">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Rewards</h2>
+              <div className="flex flex-wrap gap-4">
+                {service.rewards.map((reward:any, index) => (
+                  <RewardIcon key={index} item={reward.item} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Course Details Section */}
           <div className="mt-8 p-6 rounded-lg shadow-md bg-white">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Course Details</h2>
             <ul className="space-y-2">
-              {service.details.map((detail, index) => (
+              {service?.details?.map((detail, index) => (
                 <li key={index} className="flex items-start gap-2">
                   <CheckCircleSVG className={`${styling.checkColor} mt-1`} />
                   <span>{detail}</span>
@@ -183,82 +166,90 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
             </ul>
           </div>
 
-          {/* Target Audience Section */}
-          <div className="mt-8 p-6 rounded-lg shadow-md bg-white">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Target Audience</h2>
-            <ul className="space-y-2">
-              {service.targetAudience.map((audience, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <CheckCircleSVG className={`${styling.checkColor} mt-1`} />
-                  <span>{audience}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Curriculum Section */}
+          {service.curriculum && (
+            <div className="mt-8 p-6 rounded-lg shadow-md bg-white">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Curriculum</h2>
+              <div className="space-y-6">
+                {Object.entries(service.curriculum).map(([section, topics]) => (
+                  <div key={section}>
+                    <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                      {section.charAt(0).toUpperCase() + section.slice(1)} Topics
+                    </h3>
+                    <ul className="list-disc pl-6 space-y-1">
+                      {(topics as string[]).map((topic, index) => (
+                        <li key={index} className="text-gray-700">
+                          {topic}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Prerequisites Section */}
-          <div className="mt-8 p-6 rounded-lg shadow-md bg-white">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Prerequisites</h2>
-            <ul className="space-y-2">
-              {service.prerequisites.map((prereq, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <CheckCircleSVG className={`${styling.checkColor} mt-1`} />
-                  <span>{prereq}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {service.prerequisites && (
+            <div className="mt-8 p-6 rounded-lg shadow-md bg-white">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Prerequisites</h2>
+              <ul className="list-disc pl-6 space-y-1">
+                {service.prerequisites.map((prerequisite, index) => (
+                  <li key={index} className="text-gray-700">
+                    {prerequisite}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
-          {/* Curriculum and Outcomes Section */}
-          <div className="mt-8 p-6 rounded-lg shadow-md bg-white">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Curriculum</h2>
-            <h3 className="text-lg font-semibold text-gray-700 mb-2">Basic Topics</h3>
-            <ul className="space-y-2 mb-4">
-              {service.curriculum.basic?.map((topic, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <CheckCircleSVG className={`${styling.checkColor} mt-1`} />
-                  <span>{topic}</span>
-                </li>
-              ))}
-            </ul>
-            <h3 className="text-lg font-semibold text-gray-700 mb-2">Advanced Topics</h3>
-            <ul className="space-y-2 mb-4">
-              {service.curriculum.advanced?.map((topic, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <CheckCircleSVG className={`${styling.checkColor} mt-1`} />
-                  <span>{topic}</span>
-                </li>
-              ))}
-            </ul>
-            {service.curriculum.other && (
-              <>
-                <h3 className="text-lg font-semibold text-gray-700 mb-2">Other Topics</h3>
-                <ul className="space-y-2 mb-4">
-                  {service.curriculum.other.map((topic, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <CheckCircleSVG className={`${styling.checkColor} mt-1`} />
-                      <span>{topic}</span>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )}
-            <h2 className="text-2xl font-semibold text-gray-800 mt-6 mb-4">Learning Outcomes</h2>
-            <ul className="space-y-2">
-              {service.outcomes.map((outcome, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <CheckCircleSVG className={`${styling.checkColor} mt-1`} />
-                  <span>{outcome}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Target Audience Section */}
+          {service.targetAudience && (
+            <div className="mt-8 p-6 rounded-lg shadow-md bg-white">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Target Audience</h2>
+              <ul className="list-disc pl-6 space-y-1">
+                {service.targetAudience.map((audience, index) => (
+                  <li key={index} className="text-gray-700">
+                    {audience}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
-          {/* Certification Section */}
-          <div className="mt-8 p-6 rounded-lg shadow-md bg-white">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Certification</h2>
-            <p className="text-gray-700">{service.certification}</p>
-          </div>
+
+
+                    {/* Certificate Section */}
+                    {service.certification && (
+            <div className="mt-8 p-6 rounded-lg shadow-md bg-white">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Certification</h2>
+              <div className="space-y-4">
+                <p className="text-gray-700">
+                  Upon successful completion of this course, you will receive:
+                </p>
+                <div className="flex items-center gap-4">
+                  <svg
+                    className="w-10 h-10 text-green-500"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                    <path d="M9 12l2 2 4-4" />
+                  </svg>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800">{service.certification}</h3>
+                    <p className="text-gray-600">
+                      This certificate validates your skills and can be added to your resume.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </>

@@ -9,6 +9,7 @@ export interface Service {
   buttonColor: string;
   checkColor: string;
   discount?:number;
+  rewards?: { item: string; image: string }[];
 }
   
   export interface DetailedService extends Service {
@@ -26,6 +27,8 @@ export interface Service {
     price: string;
     schedule: string;
     discount?:number;
+    rewards?: { item: string; image: string }[];
+
   }
 
 
@@ -51,9 +54,19 @@ export interface SubCourse {
   price: string;
   schedule: string;
   discount?:number;
+  rewards?: { item: string; image: string }[];
+
 
 }
 
 export interface ProgrammingLanguagesService extends Omit<DetailedService, "details" | "description" | "duration" | "targetAudience" | "prerequisites" | "curriculum" | "outcomes" | "certification" | "price" | "schedule"> {
   subCourses: SubCourse[];
+}
+
+
+export interface Testimonial {
+  text: string;
+  name: string;
+  position?: string; // Optional, as not all might have a position
+  image?: string; // Optional, to handle cases where image is unavailable
 }

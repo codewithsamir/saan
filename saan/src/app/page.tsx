@@ -4,10 +4,11 @@ import {  services } from "@/util/service";
 import HeroSection from "@/components/landingpage/herosection";
 
 import ServiceSection from "@/components/landingpage/sections";
-import Servicecardsection from "@/components/landingpage/servicecardsection";
+
 import ContactSection from "@/components/landingpage/contactus";
 import GallerySection from "@/components/landingpage/galarysection";
 import PopupAdvertisement from "@/components/landingpage/advertisement";
+
 
 export default function Home() {
 
@@ -37,6 +38,10 @@ export default function Home() {
 
 
 {/* Dynamic Service Sections */}
+<>
+<h2 className="text-4xl mt-6 font-bold text-center text-transparent  bg-gradient-to-l to-yellow-400 from-orange-600 bg-clip-text mb-10">Our Services</h2>
+
+
 {services.map((service, index) => (
         <ServiceSection
           key={index}
@@ -50,15 +55,17 @@ export default function Home() {
           buttonColor={service.buttonColor}
           checkColor={service.checkColor}
           discount={service.discount}
+          rewards={service.rewards }
         />
       ))}
-
-     <Servicecardsection />
+</>
+     {/* <Servicecardsection /> */}
 
 
 <GallerySection/>
 
       {/* Contact Section */}
+      
   <ContactSection/> 
 
      
