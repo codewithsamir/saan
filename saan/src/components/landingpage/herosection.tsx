@@ -325,7 +325,7 @@ const HeroSection = () => {
               </li>
             ))}
           </ul>
-          <div className="mt-6">
+          <div className="mt-4">
             <Button
               size="lg"
               className="bg-yellow-500 text-blue-900 hover:bg-yellow-600 font-semibold px-6 py-3 rounded-full flex items-center gap-2 mx-auto sm:mx-0"
