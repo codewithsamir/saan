@@ -21,7 +21,7 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
     checkColor: "text-orange-500",
     description:
       "Our Bridge Course & Entrance Preparation for +2 is designed to help students transition smoothly from SEE to higher secondary education in Nepal. This intensive program prepares students for entrance exams required by top +2 colleges, covering all major subjects and providing personalized support to ensure success.",
-    duration: "6 Weeks",
+    duration: "3 month",
     targetAudience: [
       "Students who have completed SEE and are preparing for +2 entrance exams",
       "Students aiming to join top +2 colleges in Nepal (e.g., St. Xavier’s, Budhanilkantha)",
@@ -53,7 +53,7 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
     ],
     certification: "Certificate of Completion for Bridge Course",
     price: "NPR 7,000",
-    schedule: "Mon-Sat, 2 hours/day (Morning or Afternoon batches)",
+    schedule: "Sun-Fri, 2 hours/day (Morning or Afternoon batches)",
     discount: 50, // Added 50% discount
     rewards: [
       { item: "Notebook", image: "/notebook.jpg" },
@@ -81,7 +81,7 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
     checkColor: "text-yellow-500",
     description:
       "Our 3-Month Computer Training program is tailored for beginners and intermediate learners, focusing on essential digital skills for academic and professional success. From mastering Microsoft Office to exploring AI tools, multimedia, and web design with HTML and CSS, this course equips students with practical skills for the modern world.",
-    duration: "3 Months (Optional 6-Month Extended Program Available) and  NPR 7,000 (3 Months) / NPR 14,000 (6 Months)",
+    duration: "3 Months (Optional 6-Month Extended Program Available) and  NPR 7,000 (3 Months) / NPR 10,000 (6 Months)",
     targetAudience: [
       "Post-SEE students looking to gain digital skills",
       "Beginners with little to no computer experience",
