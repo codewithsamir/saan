@@ -1,5 +1,5 @@
 "use client";
-import { FaFacebook, FaYoutube, FaWhatsapp, FaEnvelope, FaGraduationCap } from "react-icons/fa";
+import { FaFacebook, FaYoutube, FaWhatsapp, FaGraduationCap } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { motion, Variants } from "framer-motion";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
