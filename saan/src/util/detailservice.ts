@@ -52,7 +52,7 @@ const detailedServices: (DetailedService | ProgrammingLanguagesService)[] = [
       "Develop confidence and exam-taking skills",
     ],
     certification: "Certificate of Completion for Bridge Course",
-    price: "NPR 10,000",
+    price: "NPR 7,000",
     schedule: "Mon-Sat, 2 hours/day (Morning or Afternoon batches)",
     discount: 50, // Added 50% discount
     rewards: [
