@@ -322,7 +322,7 @@ export default function ServiceSection({
                 whileHover="hover"
                 variants={buttonVariants}
               >
-                 <Button asChild className="bg-gradient-to-r text-white  from-yellow-400 to-amber-500 hover:from-amber-500 hover:to-yellow-400  font-semibold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 ">
+                 <Button asChild className={`${buttonColor}`}>
                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmZB3NxMa3Xabtg1K3Pq0wDAkfEh0-4QB1hGVjCFZc8Wdi6w/viewform?usp=sharing">Enroll Now</a>
                  </Button>
               </motion.div>
