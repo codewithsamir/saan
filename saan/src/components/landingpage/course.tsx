@@ -201,7 +201,7 @@ const CoursesPage = () => {
                       whileTap={{ scale: 0.95 }}
                       className={`w-full ${service.buttonColor} text-white font-medium py-2 rounded-full transition-colors duration-300 text-sm`}
                     >
-                      Enroll Now
+                      Explore more
                     </motion.button>
                   </Link>
                 </div>
