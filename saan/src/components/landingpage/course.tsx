@@ -128,7 +128,7 @@ const CoursesPage = () => {
         </div>
 
         {/* Course Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:w-[80%] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full p-2 sm:w-[90%] md:w-[80%] mx-auto">
           {filteredServices.map((service, index) => {
             const IconComponent = iconMap[service.id]?.icon || FaBook; // Fallback to FaBook
             const iconColor = iconMap[service.id]?.color || 'text-gray-500';
