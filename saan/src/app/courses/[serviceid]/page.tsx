@@ -136,8 +136,8 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
                 <button
                   className={`px-6 py-2 rounded-lg text-white ${styling.buttonColor} transition-colors duration-300`}
                 >
-                  Enroll Now
-                </button>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmZB3NxMa3Xabtg1K3Pq0wDAkfEh0-4QB1hGVjCFZc8Wdi6w/viewform?usp=sharing">Enroll Now</a>
+    </button>
               </div>
             </div>
           </div>

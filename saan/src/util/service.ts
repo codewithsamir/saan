@@ -19,11 +19,11 @@ const services: Service[] = [
     textColor: "text-orange-600",
     buttonColor: "bg-orange-500 hover:bg-orange-600",
     checkColor: "text-orange-500",
-    discount: 50, // Add 50% discount
+    discount: 50,
     rewards: [
       { item: "Notebook", image: "/notebook.jpg" },
       { item: "Pen", image: "/pen.jpg" },
-    ]
+    ],
   },
   {
     title: "3-Month Computer Training",
@@ -43,11 +43,11 @@ const services: Service[] = [
     textColor: "text-blue-700",
     buttonColor: "bg-blue-500 hover:bg-blue-600",
     checkColor: "text-yellow-500",
-    discount: 50, // Add 50% discount
+    discount: 50,
     rewards: [
       { item: "Notebook", image: "/notebook.jpg" },
       { item: "Pen", image: "/pen.jpg" },
-    ]
+    ],
   },
   {
     title: "English Class",
@@ -67,13 +67,12 @@ const services: Service[] = [
     textColor: "text-green-700",
     buttonColor: "bg-green-500 hover:bg-green-600",
     checkColor: "text-green-500",
-    discount: 50, // Add 50% discount
+    discount: 50,
     rewards: [
       { item: "Notebook", image: "/notebook.jpg" },
       { item: "Pen", image: "/pen.jpg" },
-    ], // Rewards for English Class
+    ],
   },
- 
   {
     title: "Mobile Repairing",
     id: "mobile-repairing",
@@ -88,15 +87,15 @@ const services: Service[] = [
     ],
     image: "/mobile repairing.jpg",
     alt: "mobile repairing",
-    bgColor: "bg-blue-50",
-    textColor: "text-blue-700",
-    buttonColor: "bg-blue-500 hover:bg-blue-600",
-    checkColor: "text-yellow-500",
-    discount: 50, // Add 50% discount
+    bgColor: "bg-teal-50",
+    textColor: "text-teal-700",
+    buttonColor: "bg-teal-500 hover:bg-teal-600",
+    checkColor: "text-teal-500",
+    discount: 50,
     rewards: [
       { item: "Tool Kit", image: "/toolkit.jpg" },
       { item: "Screwdriver Set", image: "/screwdriver-set.jpg" },
-    ], // Rewards for Mobile Repairing
+    ],
   },
   {
     title: "Java Programming",
@@ -112,15 +111,15 @@ const services: Service[] = [
     ],
     image: "/java-programming.jpg",
     alt: "Java programming class",
-    bgColor: "bg-white",
-    textColor: "text-blue-700",
-    buttonColor: "bg-blue-500 hover:bg-blue-600",
-    checkColor: "text-yellow-500",
-    discount: 50, // Add 50% discount
+    bgColor: "bg-purple-50",
+    textColor: "text-purple-700",
+    buttonColor: "bg-purple-500 hover:bg-purple-600",
+    checkColor: "text-purple-500",
+    discount: 50,
     rewards: [
       { item: "Notebook", image: "/notebook.jpg" },
       { item: "Pen", image: "/pen.jpg" },
-    ]
+    ],
   },
   {
     title: "JavaScript Programming",
@@ -137,15 +136,15 @@ const services: Service[] = [
     ],
     image: "/javascript-programming.jpg",
     alt: "JavaScript programming class",
-    bgColor: "bg-white",
-    textColor: "text-blue-700",
-    buttonColor: "bg-blue-500 hover:bg-blue-600",
-    checkColor: "text-yellow-500",
-    discount: 50, // Add 50% discount
+    bgColor: "bg-yellow-50",
+    textColor: "text-yellow-700",
+    buttonColor: "bg-yellow-500 hover:bg-yellow-600",
+    checkColor: "text-yellow-600",
+    discount: 50,
     rewards: [
       { item: "Notebook", image: "/notebook.jpg" },
       { item: "Pen", image: "/pen.jpg" },
-    ]
+    ],
   },
   {
     title: "C Programming",
@@ -161,15 +160,15 @@ const services: Service[] = [
     ],
     image: "/c-programming.jpg",
     alt: "C programming class",
-    bgColor: "bg-white",
-    textColor: "text-blue-700",
-    buttonColor: "bg-blue-500 hover:bg-blue-600",
-    checkColor: "text-yellow-500",
-    discount: 50, // Add 50% discount
+    bgColor: "bg-indigo-50",
+    textColor: "text-indigo-700",
+    buttonColor: "bg-indigo-500 hover:bg-indigo-600",
+    checkColor: "text-indigo-500",
+    discount: 50,
     rewards: [
       { item: "Notebook", image: "/notebook.jpg" },
       { item: "Pen", image: "/pen.jpg" },
-    ]
+    ],
   },
   {
     title: "C++ Programming",
@@ -185,15 +184,15 @@ const services: Service[] = [
     ],
     image: "/cpp-programming.jpg",
     alt: "C++ programming class",
-    bgColor: "bg-white",
-    textColor: "text-blue-700",
-    buttonColor: "bg-blue-500 hover:bg-blue-600",
-    checkColor: "text-yellow-500",
-    discount: 50, // Add 50% discount
+    bgColor: "bg-pink-50",
+    textColor: "text-pink-700",
+    buttonColor: "bg-pink-500 hover:bg-pink-600",
+    checkColor: "text-pink-500",
+    discount: 50,
     rewards: [
       { item: "Notebook", image: "/notebook.jpg" },
       { item: "Pen", image: "/pen.jpg" },
-    ]
+    ],
   },
   {
     title: "Python Programming",
@@ -210,15 +209,15 @@ const services: Service[] = [
     ],
     image: "/python-programming.jpg",
     alt: "Python programming class",
-    bgColor: "bg-white",
-    textColor: "text-blue-700",
-    buttonColor: "bg-blue-500 hover:bg-blue-600",
-    checkColor: "text-yellow-500",
-    discount: 50, // Add 50% discount
+    bgColor: "bg-cyan-50",
+    textColor: "text-cyan-700",
+    buttonColor: "bg-cyan-500 hover:bg-cyan-600",
+    checkColor: "text-cyan-500",
+    discount: 50,
     rewards: [
       { item: "Notebook", image: "/notebook.jpg" },
       { item: "Pen", image: "/pen.jpg" },
-    ]
+    ],
   },
   {
     title: "Full Stack Web Development",
@@ -234,15 +233,15 @@ const services: Service[] = [
     ],
     image: "/webdevelopment.jpg",
     alt: "web development",
-    bgColor: "bg-blue-50",
-    textColor: "text-blue-700",
-    buttonColor: "bg-blue-500 hover:bg-blue-600",
-    checkColor: "text-yellow-500",
-    discount: 50, // Add 50% discount
+    bgColor: "bg-rose-50",
+    textColor: "text-rose-700",
+    buttonColor: "bg-rose-500 hover:bg-rose-600",
+    checkColor: "text-rose-500",
+    discount: 50,
     rewards: [
       { item: "Keyboard", image: "/keyboard.jpg" },
       { item: "Mouse", image: "/mouse.jpg" },
-    ], // Rewards for Programming Class
+    ],
   },
   {
     title: "Coaching for Classes 6-10",
@@ -262,9 +261,7 @@ const services: Service[] = [
     textColor: "text-blue-700",
     buttonColor: "bg-blue-500 hover:bg-blue-600",
     checkColor: "text-yellow-500",
-    // No discount for this service
   },
- 
 ];
 
 export { services };

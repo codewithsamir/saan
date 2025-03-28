@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 // Infer BadgeProps using React.ComponentProps
 type BadgeProps = React.ComponentProps<typeof Badge>;
@@ -363,9 +364,11 @@ const iconVariants = {
                 transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
               }}
             >
-              <span className="inline-block sm:whitespace-nowrap">
+            <Link href="/courses">
+            <span className="inline-block sm:whitespace-nowrap">
                 Special Offer: 50% Off All Courses Until Baisakh!
               </span>
+            </Link>
             </MotionBadge>
           </motion.div>
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
