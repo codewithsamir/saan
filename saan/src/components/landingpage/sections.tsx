@@ -301,19 +301,20 @@ export default function ServiceSection({
             </ul>
 
             {/* Buttons */}
+            <div className="flex gap-8 flex-wrap items-center  mt-6">
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               whileHover="hover"
               variants={buttonVariants}
-              className="mt-6"
+              
             >
-              <Button asChild>
+              <Button asChild  variant="outline" className="border-2 border-orange-500  text-orange-500 hover:bg-orange-500 hover:border-0 hover:text-white" >
                 <Link href={`/services/${id}`}>Explore more</Link>
               </Button>
             </motion.div>
-            {title === "Bridge Course & Entrance Preparation for +2" && (
+            
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -321,13 +322,12 @@ export default function ServiceSection({
                 whileHover="hover"
                 variants={buttonVariants}
               >
-                <Button asChild className={`mt-6 ${buttonColor}`}>
-                  <a href="https://wa.me/9824864187" target="_blank" rel="noopener noreferrer">
-                    Enroll Now
-                  </a>
-                </Button>
+                 <Button asChild className="bg-gradient-to-r text-white  from-yellow-400 to-amber-500 hover:from-amber-500 hover:to-yellow-400  font-semibold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 ">
+                   <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmZB3NxMa3Xabtg1K3Pq0wDAkfEh0-4QB1hGVjCFZc8Wdi6w/viewform?usp=sharing">Enroll Now</a>
+                 </Button>
               </motion.div>
-            )}
+            </div>
+            
           </div>
 
           {/* Right Column: Image */}

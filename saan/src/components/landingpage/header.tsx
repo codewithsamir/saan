@@ -46,9 +46,13 @@ export default function Header() {
           </NavigationMenu>
 
           {/* Contact Us */}
-          <Button asChild className="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-orange-600 hover:to-yellow-500">
+          <Button asChild className="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-orange-600 hover:to-yellow-500  text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 ">
             <Link href="#contactus">Contact Us</Link>
           </Button>
+          <Button asChild className="bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-amber-500 hover:to-yellow-400 text-gray-900 font-semibold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 ">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmZB3NxMa3Xabtg1K3Pq0wDAkfEh0-4QB1hGVjCFZc8Wdi6w/viewform?usp=sharing">Enroll Now</a>
+  </Button>
+         
         </div>
       </div>
     </header>

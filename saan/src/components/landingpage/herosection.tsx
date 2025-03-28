@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { FaGraduationCap, FaWhatsapp, FaChalkboardTeacher, FaMobileAlt, FaCode, FaLaptop, FaBook } from "react-icons/fa";
+import { FaGraduationCap, FaChalkboardTeacher, FaMobileAlt, FaCode, FaLaptop, FaBook, FaFileAlt } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
@@ -216,6 +216,64 @@ const HeroSection = () => {
     return () => clearInterval(typingInterval);
   }, []);
 
+
+// Button animation variants
+const buttonVariants = {
+  initial: {
+    scale: 0.7,
+    opacity: 0,
+    y: 20, // Start slightly below
+  },
+  animate: {
+    scale: 1,
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 150,
+      damping: 10,
+      duration: 0.8,
+    },
+  },
+  hover: {
+    scale: 1.15,
+    rotate: 3, // More pronounced rotation
+    // boxShadow: '0px 15px 30px rgba(239, 68, 68, 0.4)', // Reddish glow
+    // background: 'linear-gradient(to right, #f97316, #ef4444)', // Orange to red on hover
+    transition: {
+      type: 'spring',
+      stiffness: 200,
+      damping: 15,
+    },
+  },
+  tap: {
+    scale: 0.9, // More noticeable shrink on click
+    transition: {
+      duration: 0.1,
+    },
+  },
+};
+
+// Icon animation variants
+const iconVariants = {
+  hover: {
+    rotate: [0, 15, -15, 15, 0], // More pronounced wiggle
+    scale: 1.2,
+    transition: {
+      duration: 0.6,
+      repeat: 1,
+    },
+  },
+  tap: {
+    scale: 1.3,
+    rotate: 10,
+    transition: {
+      type: 'spring',
+      stiffness: 300,
+      damping: 10,
+    },
+  },
+};
   // Expanded Services List
   const services = [
     { text: "Bridge Course & Entrance Preparation", icon: <FaGraduationCap />, color: "#F97316" },
@@ -325,17 +383,26 @@ const HeroSection = () => {
               </li>
             ))}
           </ul>
-          <div className="mt-4">
-            <Button
-              size="lg"
-              className="bg-yellow-500 text-blue-900 hover:bg-yellow-600 font-semibold px-6 py-3 rounded-full flex items-center gap-2 mx-auto sm:mx-0"
-            >
-              <FaWhatsapp className="text-lg" />
-              <a href="https://wa.me/9824864187" target="_blank" rel="noopener noreferrer">
-                Join Now via WhatsApp
-              </a>
-            </Button>
-          </div>
+          <motion.div
+  variants={buttonVariants}
+  initial="initial"
+  animate="animate"
+  whileHover="hover"
+  whileTap="tap"
+  className="inline-block"
+>
+  <Button
+    size="lg"
+    className="bg-gradient-to-r from-red-500 to-orange-500 text-white font-extrabold text-xl px-8 py-4 rounded-full flex items-center gap-3 mx-auto sm:mx-0 shadow-2xl"
+  >
+    <motion.div variants={iconVariants}>
+      <FaFileAlt className="text-2xl" />
+    </motion.div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmZB3NxMa3Xabtg1K3Pq0wDAkfEh0-4QB1hGVjCFZc8Wdi6w/viewform?usp=sharing" target="_blank" rel="noopener noreferrer">
+      Enroll Now
+    </a>
+  </Button>
+</motion.div>
       <ScrollTrigger />
 
         </div>
